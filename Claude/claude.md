@@ -144,3 +144,25 @@ Universal development rules that apply to all projects. Project-specific details
 - Document complex algorithms, thresholds, and non-obvious configuration choices
 - Add TODOs for incomplete code with ticket numbers if applicable
 - Don't add docstrings or comments to code you didn't change
+
+---
+
+## Agents
+
+Use these specialized agents (via the Task tool) for targeted work. Each agent runs as a subagent with access to the full codebase.
+
+| Agent | When to use |
+|-------|-------------|
+| `architecture-reviewer` | **Before** implementing significant changes — validates design, evaluates trade-offs, catches structural issues early |
+| `senior-code-reviewer` | **After** completing a feature or logical chunk of code — reviews for bugs, security, performance, and maintainability |
+| `senior-qa-engineer` | When you need test coverage analysis, test case design, TDD workflows, or flaky test debugging |
+| `code-simplification-architect` | When code works but is messy — simplifies nested logic, breaks down god classes, eliminates duplication |
+| `github-actions-engineer` | For creating, debugging, or optimizing GitHub Actions workflows and CI/CD pipelines |
+
+### Usage pattern
+
+1. **Plan** — use `architecture-reviewer` to validate the approach
+2. **Implement** — write the code
+3. **Review** — use `senior-code-reviewer` to catch issues
+4. **Test** — use `senior-qa-engineer` to ensure coverage
+5. **Simplify** — use `code-simplification-architect` if the result is complex
