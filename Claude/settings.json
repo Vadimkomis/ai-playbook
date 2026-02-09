@@ -1,7 +1,5 @@
 {
-  "model": "opus",
   "permissions": {
-    "defaultMode": "acceptEdits",
     "deny": [
       "Read(.env)",
       "Read(.env.*)",
@@ -16,13 +14,15 @@
       "Bash(git push --force:*)",
       "Bash(git reset --hard:*)",
       "Bash(> /dev:*)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   }
 }
