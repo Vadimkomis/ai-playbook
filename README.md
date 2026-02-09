@@ -1,57 +1,56 @@
-# Usage Examples
-This will be my rules for Claude, Codex, and Gemini. No Grok
-### Combining Rule Sets
+# ai-playbook
+
+Centralized AI coding assistant configuration for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex](https://openai.com/index/introducing-codex/).
+
+## Structure
+
+```
+Claude/
+  ├── CLAUDE.md          # Universal development guidelines (symlinked to ~/.claude/)
+  ├── settings.json      # Claude Code settings
+  ├── statusline.sh      # Status line configuration
+  └── agents/            # Custom agent definitions
+        ├── architecture-reviewer.md
+        ├── code-simplification-architect.md
+        ├── github-actions-engineer.md
+        ├── senior-code-reviewer.md
+        └── senior-qa-engineer.md
+
+Codex/
+  └── AGENTS.md          # Codex agent instructions
+```
+
+## Setup
+
+### Claude Code
+
+Symlink the Claude directory into your home config so all projects pick up the shared rules:
+
 ```bash
-# For a React project, combine these rules:
-cat cursor-rules/global/core.mdc cursor/rules/js.json cursor/rules/react.mdc
+# Link shared CLAUDE.md (applies to all projects)
+ln -sf /path/to/ai-playbook/Claude/CLAUDE.md ~/.claude/CLAUDE.md
+
+# Link settings
+ln -sf /path/to/ai-playbook/Claude/settings.json ~/.claude/settings.json
+
+# Link custom agents
+ln -sf /path/to/ai-playbook/Claude/agents ~/.claude/agents
 ```
 
-### Setting Up Symbolic Links
+### Codex
+
+Copy or symlink `Codex/AGENTS.md` into your project root:
+
 ```bash
-# Create a symbolic link to use centralized rules across projects
-rm -rf your-project/.cursor/rules && ln -sf path/to/cursor-rules/rules your-project/.cursor/
+ln -sf /path/to/ai-playbook/Codex/AGENTS.md /path/to/your-project/AGENTS.md
 ```
 
-This allows you to maintain a single source of truth for your Cursor rules. Any updates to the centralized rules repository will automatically be available to all linked projects.
+## What's Inside
 
-### Customizing Rules
-```json
-{
-  "includes": ["../../cursor-rules/global/core.json"],
-  "rules": {
-    "maxFunctionLength": 20
-  }
-}
-```
-
-## Benefits
-- Consistent code quality across projects
-- Reduced onboarding time for new team members
-- Better AI suggestions from Cursor
-- Codified best practices for multiple languages
-- Community-vetted standards
-
-## Contributing
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch
-3. Add or modify rules
-4. Submit a pull request with a clear description
-
-Before submitting, ensure your rules:
-- Follow established conventions for the target language
-- Include clear documentation
-- Are generally applicable (not too specific to a particular workflow)
+- **CLAUDE.md** — Universal development guidelines: pre-commit workflow, code organization principles, testing requirements, error handling, and code review checklist. Project-specific details (stack, architecture, build commands) belong in each project's own `CLAUDE.md`.
+- **agents/** — Specialized agent definitions for architecture review, code simplification, QA, code review, and GitHub Actions.
+- **AGENTS.md** — Codex-compatible agent instructions.
 
 ## License
-MIT License - See LICENSE file for details
 
-## Maintenance
-This repository is actively maintained. Rules are updated to reflect:
-- New language features
-- Evolving best practices
-- Community feedback and contributions
-
----
-
-**Note**: These rules are guidelines, not strict requirements. Customize them to fit your specific project needs and team preferences.
+MIT License — See LICENSE file for details.
