@@ -1,36 +1,14 @@
-# Cursor-specific files
-.cursor/
-.cursor-ignore
-.cursor/logs/
-.cursor-project
-.cursor-local
-.cursor/suggestions/
-.cursor-chat/
-.cursor/tmp/
-
 # Editor backup files
 *~
 *.swp
 *.swo
-.cursor.bak/
 
+# OS files
 .DS_Store
 
 # Log files
-cursor-debug.log
-cursor.log
 *.log
-
-# User-specific settings (optional - you might want to share these)
-# .cursorrc
-# cursor.json
 
 # Temporary directories
 .tmp/
 .temp/
-
-# Crash reports
-cursor-crash-report.json
-
-# Generated cursor files
-.generated/
