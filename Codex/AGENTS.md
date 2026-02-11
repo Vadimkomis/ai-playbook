@@ -4,6 +4,8 @@
 - Always create or update a `.gitignore` that matches the stack when starting any project.
 - Remove files that are obsolete because of your change (refactors, feature removals, etc.) and only revert files that you modified or were explicitly asked to revert.
 - Moving, renaming, or restoring files is fine when it supports the current task.
+- When bootstrapping a new project, add a `features.md` on day one and treat it as the source of truth described below.
+- Also create a new `AGENTS.md` for every project: pull in this repository’s macro instructions via a symlink to this file, and document the micro/project-specific guidance alongside it.
 
 ## Collaboration + safety
 - **Ask the user before deleting files to silence lint/type failures.** Someone else may be editing them.
