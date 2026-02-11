@@ -1,6 +1,17 @@
-# Development Guidelines
+# Development Guidelines (Macro)
 
-Universal development rules that apply to all projects. Project-specific details (stack, architecture, build commands, etc.) belong in each project's own CLAUDE.md.
+> **Source:** [`ai-playbook/Claude/claude.md`](https://github.com/Vadimkomis/ai-playbook)
+> Symlinked from `~/.claude/CLAUDE.md` — applies globally to all projects.
+
+This file is the **macro** — universal development rules shared across every project. It is maintained in the ai-playbook repo and symlinked as the global `~/.claude/CLAUDE.md`.
+
+Each project should have its own `CLAUDE.md` at the repo root as the **micro** — project-specific instructions (stack, architecture, build commands, dependencies, conventions, etc.) that extend these universal rules. The macro provides the baseline; the micro tailors it to the project.
+
+### Setup for new projects
+
+1. Ensure `~/.claude/CLAUDE.md` symlinks to this file (macro — already done globally)
+2. Create a `CLAUDE.md` in the project root with project-specific details (micro)
+3. The micro `CLAUDE.md` should **not** duplicate macro rules — only add what's specific to that project
 
 ---
 
