@@ -1,6 +1,42 @@
-# Development Guidelines
+# Development Guidelines (Macro)
 
-Universal development rules that apply to all projects. Project-specific details (stack, architecture, build commands, etc.) belong in each project's own CLAUDE.md.
+> **Source:** [`ai-playbook/Claude/claude.md`](https://github.com/Vadimkomis/ai-playbook)
+> Symlinked from `~/.claude/CLAUDE.md` — applies globally to all projects.
+
+This file is the **macro** — universal development rules shared across every project. It is maintained in the ai-playbook repo and symlinked as the global `~/.claude/CLAUDE.md`.
+
+Each project should have its own `CLAUDE.md` at the repo root as the **micro** — project-specific instructions (stack, architecture, build commands, dependencies, conventions, etc.) that extend these universal rules. The macro provides the baseline; the micro tailors it to the project.
+
+### Setup for new projects
+
+1. Ensure `~/.claude/CLAUDE.md` symlinks to this file (macro — already done globally)
+2. Create a `CLAUDE.md` in the project root with project-specific details (micro)
+3. The micro `CLAUDE.md` should **not** duplicate macro rules — only add what's specific to that project
+4. Create a `features.md` in the project root — this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
+
+---
+
+## Feature Tracking
+
+Every project **must** have a `features.md` file at the repo root. This file is the **single source of truth** for all features in the project.
+
+### Rules
+
+- **Create `features.md` at project inception** — it should be one of the first files in any new project
+- **Always consult `features.md` before implementing** — check existing features, their status, and how new work fits in
+- **Update `features.md` whenever features change** — adding, modifying, or removing a feature must be reflected here
+- **Never contradict `features.md`** — if code and `features.md` disagree, align the code to the spec (or update the spec first with the user's approval)
+
+### Structure
+
+Each feature entry should include:
+
+- **Feature name** — short, descriptive title
+- **Status** — e.g., `planned`, `in-progress`, `completed`, `deprecated`
+- **Description** — what the feature does from the user's perspective
+- **Notes** — any relevant implementation details, constraints, or decisions
+
+The exact format can be adapted per project, but every entry must at minimum have a name, status, and description.
 
 ---
 
@@ -20,7 +56,7 @@ Universal development rules that apply to all projects. Project-specific details
 - [ ] Linter passes (mandatory)
 - [ ] Unit tests added/updated for all changes (mandatory)
 - [ ] Tests pass before committing
-- [ ] Update feature specs when changing user-facing behavior
+- [ ] Update `features.md` when changing user-facing behavior
 - [ ] Heavy work runs off the main/UI thread
 - [ ] UI updates happen on the main/UI thread
 - [ ] Errors are typed and have user-facing descriptions
