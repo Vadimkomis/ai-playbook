@@ -54,20 +54,27 @@ ln -sf /path/to/ai-playbook/Codex/AGENTS.md /path/to/your-project/AGENTS.md
 - **agents/** — Specialized agent definitions for architecture review, code simplification, QA, code review, and GitHub Actions.
 - **AGENTS.md** — Codex-compatible agent instructions.
 
-Updating + sanity check
+## Updating + Sanity Check
+
 After updating rules or agents:
+
+```bash
 # Confirm symlinks resolve correctly
 ls -la ~/.claude
 
 # Optional: verify the target file exists and is readable
 cat ~/.claude/CLAUDE.md | head
+```
 
 If a symlink is broken, it usually means you moved the repo. Put it somewhere stable and relink.
-Social preview + README banner
+
+## Social Preview + README Banner
+
 This repo includes:
-assets/banner.png — used at the top of this README
-assets/social-preview.png — upload to GitHub → Settings → Social preview
-GitHub’s social preview guidance: keep the image under 1MB; 1280×640 works best.
+- `assets/banner.png` — used at the top of this README
+- `assets/social-preview.png` — upload to GitHub → Settings → Social preview
+
+GitHub's social preview guidance: keep the image under 1MB; 1280×640 works best.
 
 ## License
 
