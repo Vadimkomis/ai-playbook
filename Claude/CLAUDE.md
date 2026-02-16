@@ -1,6 +1,6 @@
 # Development Guidelines (Macro)
 
-> **Source:** [`ai-playbook/Claude/claude.md`](https://github.com/Vadimkomis/ai-playbook)
+> **Source:** [`ai-playbook/Claude/CLAUDE.md`](https://github.com/Vadimkomis/ai-playbook/blob/main/Claude/CLAUDE.md)
 > Symlinked from `~/.claude/CLAUDE.md` — applies globally to all projects.
 
 This file is the **macro** — universal development rules shared across every project. It is maintained in the ai-playbook repo and symlinked as the global `~/.claude/CLAUDE.md`.

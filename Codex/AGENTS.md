@@ -1,15 +1,15 @@
 # Development Guidelines (Codex Mirror)
 
-> **Source of truth:** `../Claude/claude.md`.
-> This file should stay as close as possible to `../Claude/claude.md`, with one intentional difference: this file uses Codex `skills/` instead of Claude subagents.
+> **Source of truth:** `../Claude/CLAUDE.md`.
+> This file should stay as close as possible to `../Claude/CLAUDE.md`, with one intentional difference: this file uses Codex `skills/` instead of Claude subagents.
 
 This file mirrors the macro development rules for Codex usage.
 
 ### Setup for new projects
 
-1. Use `../Claude/claude.md` as the primary source of truth for macro guidance
+1. Use `../Claude/CLAUDE.md` as the primary source of truth for macro guidance
 2. Create an `AGENTS.md` in the project root as the Codex mirror
-3. Keep this `AGENTS.md` aligned with `../Claude/claude.md`; do not diverge except for the skills/agents adaptation
+3. Keep this `AGENTS.md` aligned with `../Claude/CLAUDE.md`; do not diverge except for the skills/agents adaptation
 4. Create a `features.md` in the project root - this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
 
 ---
