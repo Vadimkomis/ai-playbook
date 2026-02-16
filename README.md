@@ -36,6 +36,7 @@ Codex/
         ├── architecture-reviewer/
         ├── code-simplification-architect/
         ├── github-actions-engineer/
+        ├── devops-engineer/
         ├── mobile-engineer/
         ├── senior-code-reviewer/
         └── senior-qa-engineer/
