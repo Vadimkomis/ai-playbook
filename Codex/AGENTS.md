@@ -11,6 +11,7 @@ This file mirrors the macro development rules for Codex usage.
 2. Create an `AGENTS.md` in the project root as the Codex mirror
 3. Keep this `AGENTS.md` aligned with `../Claude/CLAUDE.md`; do not diverge except for the skills/agents adaptation
 4. Create a `features.md` in the project root - this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
+5. Set up a linter configuration appropriate to the project's language(s)
 
 ---
 

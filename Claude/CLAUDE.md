@@ -13,6 +13,7 @@ Each project should have its own `CLAUDE.md` at the repo root as the **micro** �
 2. Create a `CLAUDE.md` in the project root with project-specific details (micro)
 3. The micro `CLAUDE.md` should **not** duplicate macro rules — only add what's specific to that project
 4. Create a `features.md` in the project root — this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
+5. Set up a linter configuration appropriate to the project's language(s)
 
 ---
 
