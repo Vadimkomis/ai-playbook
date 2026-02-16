@@ -193,6 +193,8 @@ Use reusable Codex skills (stored under `skills/`) for targeted work and portabi
 | `senior-qa-engineer` | When you need test coverage analysis, test case design, TDD workflows, or flaky test debugging |
 | `code-simplification-architect` | When code works but is messy - simplifies nested logic, breaks down god classes, eliminates duplication |
 | `github-actions-engineer` | For creating, debugging, or optimizing GitHub Actions workflows and CI/CD pipelines |
+| `devops-engineer` | When designing infrastructure and delivery beyond GitHub Actions - IaC, cloud provisioning, containers/Kubernetes, environments, and observability |
+| `mobile-engineer` | When building mobile features or fixing platform issues - handles UI flows, lifecycle, offline behavior, performance, and device-specific bugs |
 
 ### Usage pattern
 
