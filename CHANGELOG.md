@@ -17,11 +17,12 @@ This project follows Semantic Versioning. The structure below is inspired by Kee
 ### Changed
 - Updated README to reflect the latest Codex changes: documented `Codex/skills/`, clarified the AGENTS mirror, and added a "Getting Started with Codex Skills" section.
 - Added a Table of Contents and converted the title to an H1 in README.
-- Updated `Codex/AGENTS.md` skills table to include `mobile-engineer` and `devops-engineer`.
+- Expanded `Codex/AGENTS.md` substantially (from ~37 lines to 200+), added usage guidance, completed the Skills table (including `mobile-engineer` and `devops-engineer`), and standardized punctuation to match Claude.
 - Corrected references to `../Claude/CLAUDE.md` (uppercase) where applicable.
+ - Updated `Claude/CLAUDE.md` with macro/micro guidance and a feature tracking section; fixed source link casing and direct GitHub blob link.
 
 ### Notes
-- Documentation-focused release; no functional/code changes.
+- Documentation-focused release with substantial additions (new SKILL docs, expanded AGENTS, updated CLAUDE macro guidance); no functional/code changes.
 
 ## [1.0.0] - 2026-02-10
 
