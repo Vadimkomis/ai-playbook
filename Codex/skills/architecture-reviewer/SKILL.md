@@ -18,11 +18,11 @@ Review architecture before coding large or risky changes.
 
 ## Review Checklist
 
-- Validate coupling and dependency direction.
-- Validate scalability bottlenecks and performance risks.
-- Validate security and privacy implications.
-- Validate operational impact: deployability, observability, rollback.
-- Validate test strategy for architecture-critical behavior.
+- Coupling and dependency direction.
+- Scalability bottlenecks and performance risks.
+- Security and privacy implications.
+- Operational impact: deployability, observability, rollback.
+- Test strategy for architecture-critical behavior.
 
 ## Output
 
