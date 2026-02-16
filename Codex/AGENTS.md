@@ -7,7 +7,7 @@ This file mirrors the macro development rules for Codex CLI usage (open-source a
 
 ### Setup for new projects
 
-1. Use `../Claude/CLAUDE.md` as the primary source of truth for macro guidance
+1. Use `../Claude/CLAUDE.md` as the macro source of truth — use this `AGENTS.md` as the Codex mirror
 2. Create an `AGENTS.md` in the project root as the Codex mirror
 3. Keep this `AGENTS.md` aligned with `../Claude/CLAUDE.md`; do not diverge except for the skills/agents adaptation
 4. Create a `features.md` in the project root — this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
