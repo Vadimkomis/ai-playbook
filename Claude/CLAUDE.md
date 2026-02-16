@@ -47,9 +47,9 @@ The exact format can be adapted per project, but every entry must at minimum hav
 1. **Run the project's linter** before committing any code changes
 2. Fix all errors before committing (warnings are acceptable but should be minimized)
 3. **Run tests and ensure they pass before committing**
-4. **Commit changes automatically after all tests pass locally** — do not ask for permission
+4. **Commit and push changes automatically after all tests pass locally** — do not ask for permission
 
-**IMPORTANT:** Do not ask for permission to run linters, tests, or to commit. Run them automatically and commit when tests pass.
+**IMPORTANT:** Do not ask for permission to run linters, tests, commit, or push. Run them automatically — commit and push when tests pass.
 
 ### Code Review Checklist
 
