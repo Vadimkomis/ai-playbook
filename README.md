@@ -87,7 +87,7 @@ rsync -a /path/to/ai-playbook/Codex/skills/architecture-reviewer \
 - **CLAUDE.md** — Universal development guidelines: pre-commit workflow, code organization principles, testing requirements, error handling, and code review checklist. Project-specific details (stack, architecture, build commands) belong in each project's own `CLAUDE.md`.
 - **agents/** — Specialized agent definitions for architecture review, code simplification, QA, code review, and GitHub Actions.
 - **AGENTS.md** — Codex-compatible agent and workflow instructions (mirrors Claude guidance, adapted for skills).
-- **skills/** — Reusable Codex skills for targeted tasks (architecture reviews, code reviews, QA, simplification, GitHub Actions, mobile).
+- **skills/** — Reusable Codex skills for targeted tasks (architecture reviews, code reviews, QA, simplification, GitHub Actions, DevOps, mobile).
 
 ## Getting Started with Codex Skills
 
