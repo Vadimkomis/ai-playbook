@@ -3,7 +3,7 @@
 > **Source of truth:** `../Claude/CLAUDE.md`.
 > This file should stay as close as possible to `../Claude/CLAUDE.md`, with one intentional difference: this file uses Codex `skills/` instead of Claude subagents.
 
-This file mirrors the macro development rules for Codex usage.
+This file mirrors the macro development rules for Codex CLI usage (open-source agentic coding interface; not the legacy OpenAI Codex model).
 
 ### Setup for new projects
 
