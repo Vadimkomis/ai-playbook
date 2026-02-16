@@ -10,7 +10,7 @@ This file mirrors the macro development rules for Codex CLI usage (open-source a
 1. Use `../Claude/CLAUDE.md` as the primary source of truth for macro guidance
 2. Create an `AGENTS.md` in the project root as the Codex mirror
 3. Keep this `AGENTS.md` aligned with `../Claude/CLAUDE.md`; do not diverge except for the skills/agents adaptation
-4. Create a `features.md` in the project root - this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
+4. Create a `features.md` in the project root — this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
 5. Set up a linter configuration appropriate to the project's language(s)
 
 ---
@@ -21,19 +21,19 @@ Every project **must** have a `features.md` file at the repo root. This file is 
 
 ### Rules
 
-- **Create `features.md` at project inception** - it should be one of the first files in any new project
-- **Always consult `features.md` before implementing** - check existing features, their status, and how new work fits in
-- **Update `features.md` whenever features change** - adding, modifying, or removing a feature must be reflected here
-- **Never contradict `features.md`** - if code and `features.md` disagree, align the code to the spec (or update the spec first with the user's approval)
+- **Create `features.md` at project inception** — it should be one of the first files in any new project
+- **Always consult `features.md` before implementing** — check existing features, their status, and how new work fits in
+- **Update `features.md` whenever features change** — adding, modifying, or removing a feature must be reflected here
+- **Never contradict `features.md`** — if code and `features.md` disagree, align the code to the spec (or update the spec first with the user's approval)
 
 ### Structure
 
 Each feature entry should include:
 
-- **Feature name** - short, descriptive title
-- **Status** - e.g., `planned`, `in-progress`, `completed`, `deprecated`
-- **Description** - what the feature does from the user's perspective
-- **Notes** - any relevant implementation details, constraints, or decisions
+- **Feature name** — short, descriptive title
+- **Status** — e.g., `planned`, `in-progress`, `completed`, `deprecated`
+- **Description** — what the feature does from the user's perspective
+- **Notes** — any relevant implementation details, constraints, or decisions
 
 The exact format can be adapted per project, but every entry must at minimum have a name, status, and description.
 
@@ -46,9 +46,9 @@ The exact format can be adapted per project, but every entry must at minimum hav
 1. **Run the project's linter** before committing any code changes
 2. Fix all errors before committing (warnings are acceptable but should be minimized)
 3. **Run tests and ensure they pass before committing**
-4. **Commit and push changes automatically after all tests pass locally** - do not ask for permission
+4. **Commit and push changes automatically after all tests pass locally** — do not ask for permission
 
-**IMPORTANT:** Do not ask for permission to run linters, tests, commit, or push. Run them automatically - commit and push when tests pass.
+**IMPORTANT:** Do not ask for permission to run linters, tests, commit, or push. Run them automatically — commit and push when tests pass.
 
 ### Code Review Checklist
 
@@ -71,22 +71,22 @@ The exact format can be adapted per project, but every entry must at minimum hav
 ### General Principles
 
 - Each function/method should do one thing well
-- Maximum function length: ~30 lines - break longer functions into smaller, named steps
+- Maximum function length: ~30 lines — break longer functions into smaller, named steps
 - Keep files focused on a single responsibility
 - Use consistent naming conventions across the project
 - Prefer composition over inheritance
 
 ### Separation of Concerns
 
-- **UI layer**: Rendering and user interaction only - no business logic
-- **Business logic layer**: Domain rules, orchestration, state management - no UI or infrastructure dependencies
-- **Data/Infrastructure layer**: Persistence, networking, external integrations - abstracted behind interfaces
+- **UI layer**: Rendering and user interaction only — no business logic
+- **Business logic layer**: Domain rules, orchestration, state management — no UI or infrastructure dependencies
+- **Data/Infrastructure layer**: Persistence, networking, external integrations — abstracted behind interfaces
 - Each layer should be independently testable
 
 ### State Management
 
 - Use explicit state representations (enums, discriminated unions, finite state machines) over multiple boolean flags
-- One source of truth per piece of state - avoid duplicated or derived state that can drift
+- One source of truth per piece of state — avoid duplicated or derived state that can drift
 - Prefer unidirectional data flow where applicable
 
 ### Dependency Management
@@ -103,7 +103,7 @@ The exact format can be adapted per project, but every entry must at minimum hav
 - Define domain-specific error types with user-facing descriptions
 - Log meaningful error messages with context
 - Validate inputs at system boundaries (user input, external APIs)
-- Prefer graceful degradation over crashing - return valid empty states for "no data" scenarios
+- Prefer graceful degradation over crashing — return valid empty states for "no data" scenarios
 - Error boundaries should exist at layer transitions
 
 ---
@@ -124,7 +124,7 @@ The exact format can be adapted per project, but every entry must at minimum hav
 - Run expensive work on background threads/queues/coroutines
 - UI updates must happen on the main/UI thread only
 - Cache expensive operations where appropriate
-- Minimize nested loops - be aware of algorithmic complexity
+- Minimize nested loops — be aware of algorithmic complexity
 - Be mindful of memory usage and potential leaks
 - Progress/animation should be independent of computation work
 
@@ -155,9 +155,9 @@ The exact format can be adapted per project, but every entry must at minimum hav
 
 - Test behavior and outcomes, not implementation details
 - Cover the happy path, error paths, and edge cases
-- Each test should be independent - no shared mutable state between tests
+- Each test should be independent — no shared mutable state between tests
 - Mock external dependencies consistently
-- Keep tests fast and deterministic - no reliance on timing, network, or randomness
+- Keep tests fast and deterministic — no reliance on timing, network, or randomness
 - Use fixed test data, not random generators
 
 ### Edge Cases to Always Consider
@@ -174,7 +174,7 @@ The exact format can be adapted per project, but every entry must at minimum hav
 
 ## Documentation
 
-- Document the "why", not the "what" - code should be self-explanatory
+- Document the "why", not the "what" — code should be self-explanatory
 - Only add comments where the logic isn't self-evident
 - Document complex algorithms, thresholds, and non-obvious configuration choices
 - Add TODOs for incomplete code with ticket numbers if applicable
@@ -188,18 +188,18 @@ Use reusable Codex skills (stored under `skills/`) for targeted work and portabi
 
 | Skill | When to use |
 |-------|-------------|
-| `architecture-reviewer` | **Before** implementing significant changes - validates design, evaluates trade-offs, catches structural issues early |
-| `senior-code-reviewer` | **After** completing a feature or logical chunk of code - reviews for bugs, security, performance, and maintainability |
+| `architecture-reviewer` | **Before** implementing significant changes — validates design, evaluates trade-offs, catches structural issues early |
+| `senior-code-reviewer` | **After** completing a feature or logical chunk of code — reviews for bugs, security, performance, and maintainability |
 | `senior-qa-engineer` | When you need test coverage analysis, test case design, TDD workflows, or flaky test debugging |
-| `code-simplification-architect` | When code works but is messy - simplifies nested logic, breaks down god classes, eliminates duplication |
+| `code-simplification-architect` | When code works but is messy — simplifies nested logic, breaks down god classes, eliminates duplication |
 | `github-actions-engineer` | For creating, debugging, or optimizing GitHub Actions workflows and CI/CD pipelines |
-| `devops-engineer` | When designing infrastructure and delivery beyond GitHub Actions - IaC, cloud provisioning, containers/Kubernetes, environments, and observability |
-| `mobile-engineer` | When building mobile features or fixing platform issues - handles UI flows, lifecycle, offline behavior, performance, and device-specific bugs |
+| `devops-engineer` | When designing infrastructure and delivery beyond GitHub Actions — IaC, cloud provisioning, containers/Kubernetes, environments, and observability |
+| `mobile-engineer` | When building mobile features or fixing platform issues — handles UI flows, lifecycle, offline behavior, performance, and device-specific bugs |
 
 ### Usage pattern
 
-1. **Plan** - apply `skills/architecture-reviewer` to validate the approach
-2. **Implement** - write the code
-3. **Review** - apply `skills/senior-code-reviewer` to catch issues
-4. **Test** - apply `skills/senior-qa-engineer` to ensure coverage
-5. **Simplify** - apply `skills/code-simplification-architect` if the result is complex
+1. **Plan** — apply `skills/architecture-reviewer` to validate the approach
+2. **Implement** — write the code
+3. **Review** — apply `skills/senior-code-reviewer` to catch issues
+4. **Test** — apply `skills/senior-qa-engineer` to ensure coverage
+5. **Simplify** — apply `skills/code-simplification-architect` if the result is complex
