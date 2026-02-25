@@ -11,7 +11,8 @@ This file mirrors the macro development rules for Codex CLI usage (open-source a
 2. Create an `AGENTS.md` in the project root as the Codex mirror
 3. Keep this `AGENTS.md` aligned with `../Claude/CLAUDE.md`; do not diverge except for the skills/agents adaptation
 4. Create a `features.md` in the project root — this is the **single source of truth** for all features (see [Feature Tracking](#feature-tracking) below)
-5. Set up a linter configuration appropriate to the project's language(s)
+5. Create an `evals.md` in the project root — this is the **single source of truth** for project evals (see [Evals](#evals) below)
+6. Set up a linter configuration appropriate to the project's language(s)
 
 ---
 
@@ -24,18 +25,53 @@ Every project **must** have a `features.md` file at the repo root. This file is 
 - **Create `features.md` at project inception** — it should be one of the first files in any new project
 - **Always consult `features.md` before implementing** — check existing features, their status, and how new work fits in
 - **Update `features.md` whenever features change** — adding, modifying, or removing a feature must be reflected here
+- **Write `features.md` in Gherkin style** — use `Feature:`, `Scenario:`, `Given`, `When`, and `Then` to describe behavior from the user's perspective
 - **Never contradict `features.md`** — if code and `features.md` disagree, align the code to the spec (or update the spec first with the user's approval)
+
+### Structure (Gherkin)
+
+Features are organized using Gherkin syntax:
+
+```gherkin
+Feature: <domain or category>
+
+  Scenario: <feature name>
+    Given <precondition or context>
+    When <action or trigger>
+    Then <expected outcome or behavior>
+    And the status is "<planned|in-progress|completed|deprecated>"
+```
+
+- **Feature** — groups related scenarios under a domain (e.g., `Feature: Authentication`)
+- **Scenario** — one per feature; the scenario name is the feature name
+- **Given/When/Then** — describes the feature from the user's perspective
+- **Status** — tracked as `And the status is "..."` on the last line of each scenario
+
+The exact format can be adapted per project, but every entry must at minimum have a name, status, and description.
+
+---
+
+## Evals
+
+Every project **must** have an `evals.md` file at the repo root. This file is the **single source of truth** for eval coverage in the project.
+
+### Rules
+
+- **Create `evals.md` at project inception** — it should be one of the first files in any new project
+- **Always consult `evals.md` before implementing** — verify existing eval scenarios and identify gaps
+- **Update `evals.md` whenever behavior changes** — new features, bug fixes, and behavioral changes must update eval definitions and status
+- **Never contradict `evals.md`** — if implementation and eval spec drift, align code to the spec (or update the spec first with the user's approval)
 
 ### Structure
 
-Each feature entry should include:
+Each eval entry should include:
 
-- **Feature name** — short, descriptive title
-- **Status** — e.g., `planned`, `in-progress`, `completed`, `deprecated`
-- **Description** — what the feature does from the user's perspective
-- **Notes** — any relevant implementation details, constraints, or decisions
+- **Eval name** — short, descriptive title
+- **Status** — e.g., `planned`, `in-progress`, `passing`, `failing`, `deprecated`
+- **Description** — what behavior is validated and why it matters
+- **Notes** — relevant fixtures, thresholds, datasets, and execution details
 
-The exact format can be adapted per project, but every entry must at minimum have a name, status, and description.
+The exact format can be adapted per project, but every eval entry must at minimum have a name, status, and description.
 
 ---
 

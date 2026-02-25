@@ -6,6 +6,8 @@ Centralized AI coding assistant configuration for [Claude Code](https://docs.ant
 ## Table of Contents
 
 - [Structure](#structure)
+- [CLI Quick Start](#cli-quick-start)
+- [Profiles by Stack](#profiles-by-stack)
 - [Setup](#setup)
   - [Claude Code](#claude-code)
   - [Codex](#codex)
@@ -40,6 +42,54 @@ Codex/
         ├── mobile-engineer/
         ├── senior-code-reviewer/
         └── senior-qa-engineer/
+```
+
+## CLI Quick Start
+
+Install into any repository with `npx`:
+
+```bash
+# from your target repository root
+npx @vadim/ai-playbook init --agent codex
+```
+
+Useful commands:
+
+```bash
+# list available stack profiles
+npx @vadim/ai-playbook profiles
+
+# install with explicit profile(s)
+npx @vadim/ai-playbook init --profile frontend-react --agent codex
+
+# verify expected files exist
+npx @vadim/ai-playbook doctor --agent codex
+```
+
+Optional local linking during development:
+
+```bash
+npm link
+ai-playbook init --profile frontend-react --agent codex
+```
+
+## Profiles by Stack
+
+```bash
+# iOS
+npx @vadim/ai-playbook init --profile mobile-ios --agent codex
+
+# Android
+npx @vadim/ai-playbook init --profile mobile-android --agent codex
+
+# React
+npx @vadim/ai-playbook init --profile frontend-react --agent codex
+
+# Python
+npx @vadim/ai-playbook init --profile backend-python --agent codex
+
+# Rust
+npx @vadim/ai-playbook init --profile backend-rust --agent codex
 ```
 
 ## Setup

@@ -4,6 +4,22 @@ All notable changes to this project are documented in this file.
 
 This project follows Semantic Versioning. The structure below is inspired by Keep a Changelog.
 
+## [Unreleased]
+
+### Added
+- Introduced an npm CLI scaffold for fast project bootstrapping:
+  - `package.json` with `ai-playbook` binary entry.
+  - `bin/ai-playbook.js` command entrypoint.
+  - `src/cli.js` with `init`, `doctor`, and `profiles` commands.
+- Added stack profile templates for:
+  - `mobile-ios`, `mobile-android`, `frontend-react`, `backend-python`, and `backend-rust`.
+- Added common templates for:
+  - `features.md` (Gherkin starter) and `evals.md`.
+- Added basic Node test coverage for CLI argument parsing and profile detection.
+
+### Changed
+- Updated `README.md` with CLI quick start and profile-specific commands for iOS, Android, React, Python, and Rust.
+
 ## [1.0.1] - 2026-02-16
 
 ### Added
