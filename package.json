@@ -1,0 +1,22 @@
+{
+  "name": "@vadim/ai-playbook",
+  "version": "0.1.0",
+  "description": "CLI to install ai-playbook into any repository",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "ai-playbook": "bin/ai-playbook.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "Codex",
+    "Claude",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  }
+}
