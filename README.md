@@ -29,6 +29,7 @@ Claude/
         ├── architecture-reviewer.md
         ├── code-simplification-architect.md
         ├── github-actions-engineer.md
+        ├── red-team-analyst.md
         ├── senior-code-reviewer.md
         └── senior-qa-engineer.md
 
@@ -40,6 +41,7 @@ Codex/
         ├── github-actions-engineer/
         ├── devops-engineer/
         ├── mobile-engineer/
+        ├── red-team-analyst/
         ├── senior-code-reviewer/
         └── senior-qa-engineer/
 ```
@@ -127,6 +129,7 @@ ln -sf /path/to/ai-playbook/Codex/AGENTS.md /path/to/your-project/AGENTS.md
 # Example: bring in a few common skills
 mkdir -p /path/to/your-project/Codex/skills
 rsync -a /path/to/ai-playbook/Codex/skills/architecture-reviewer \
+          /path/to/ai-playbook/Codex/skills/red-team-analyst \
           /path/to/ai-playbook/Codex/skills/senior-code-reviewer \
           /path/to/ai-playbook/Codex/skills/senior-qa-engineer \
           /path/to/your-project/Codex/skills/
@@ -135,9 +138,9 @@ rsync -a /path/to/ai-playbook/Codex/skills/architecture-reviewer \
 ## What's Inside
 
 - **CLAUDE.md** — Universal development guidelines: pre-commit workflow, code organization principles, testing requirements, error handling, and code review checklist. Project-specific details (stack, architecture, build commands) belong in each project's own `CLAUDE.md`.
-- **agents/** — Specialized agent definitions for architecture review, code simplification, QA, code review, and GitHub Actions.
+- **agents/** — Specialized agent definitions for architecture review, code simplification, QA, code review, red-team security analysis, and GitHub Actions.
 - **AGENTS.md** — Codex-compatible agent and workflow instructions (mirrors Claude guidance, adapted for skills).
-- **skills/** — Reusable Codex skills for targeted tasks (architecture reviews, code reviews, QA, simplification, GitHub Actions, DevOps, mobile).
+- **skills/** — Reusable Codex skills for targeted tasks (architecture reviews, adversarial security reviews, code reviews, QA, simplification, GitHub Actions, DevOps, mobile).
 
 ## Getting Started with Codex Skills
 
@@ -146,8 +149,9 @@ Follow the same usage pattern as in Claude:
 1. Plan — apply `skills/architecture-reviewer` to validate the approach
 2. Implement — write the code
 3. Review — apply `skills/senior-code-reviewer` to catch issues
-4. Test — apply `skills/senior-qa-engineer` to ensure coverage
-5. Simplify — apply `skills/code-simplification-architect` if the result is complex
+4. Attack — apply `skills/red-team-analyst` for security-sensitive changes
+5. Test — apply `skills/senior-qa-engineer` to ensure coverage
+6. Simplify — apply `skills/code-simplification-architect` if the result is complex
 
 In Codex CLI, reference the skill by path or name when creating a Task, e.g., "Use skills/architecture-reviewer on module X; focus on boundaries and failure modes."
 
