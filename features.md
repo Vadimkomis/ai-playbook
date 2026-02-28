@@ -50,6 +50,12 @@ Feature: Claude Code integration
     Then workflows are created, debugged, and optimized
     And the status is "completed"
 
+  Scenario: Red Team Analyst Agent
+    Given security-sensitive code has been implemented
+    When the red team analyst is used
+    Then an adversarial review simulates how a hacker would break, exploit, or abuse the system
+    And the status is "completed"
+
 Feature: Codex integration
 
   Scenario: AGENTS.md

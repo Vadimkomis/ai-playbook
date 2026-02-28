@@ -226,6 +226,7 @@ Use reusable Codex skills (stored under `skills/`) for targeted work and portabi
 |-------|-------------|
 | `architecture-reviewer` | **Before** implementing significant changes — validates design, evaluates trade-offs, catches structural issues early |
 | `senior-code-reviewer` | **After** completing a feature or logical chunk of code — reviews for bugs, security, performance, and maintainability |
+| `red-team-analyst` | For adversarial security review of auth, permissions, payments, uploads, APIs, and other high-risk attack surfaces |
 | `senior-qa-engineer` | When you need test coverage analysis, test case design, TDD workflows, or flaky test debugging |
 | `code-simplification-architect` | When code works but is messy — simplifies nested logic, breaks down god classes, eliminates duplication |
 | `github-actions-engineer` | For creating, debugging, or optimizing GitHub Actions workflows and CI/CD pipelines |
@@ -237,5 +238,6 @@ Use reusable Codex skills (stored under `skills/`) for targeted work and portabi
 1. **Plan** — apply `skills/architecture-reviewer` to validate the approach
 2. **Implement** — write the code
 3. **Review** — apply `skills/senior-code-reviewer` to catch issues
-4. **Test** — apply `skills/senior-qa-engineer` to ensure coverage
-5. **Simplify** — apply `skills/code-simplification-architect` if the result is complex
+4. **Attack** — apply `skills/red-team-analyst` for security-sensitive changes
+5. **Test** — apply `skills/senior-qa-engineer` to ensure coverage
+6. **Simplify** — apply `skills/code-simplification-architect` if the result is complex
