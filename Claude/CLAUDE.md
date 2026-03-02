@@ -203,6 +203,7 @@ Use these specialized agents (via the Task tool) for targeted work. Each agent r
 | `senior-qa-engineer` | When you need test coverage analysis, test case design, TDD workflows, or flaky test debugging |
 | `code-simplification-architect` | When code works but is messy — simplifies nested logic, breaks down god classes, eliminates duplication |
 | `github-actions-engineer` | For creating, debugging, or optimizing GitHub Actions workflows and CI/CD pipelines |
+| `red-team-analyst` | **After** implementing security-sensitive features — adversarial review simulating how a hacker would break, exploit, or abuse the system |
 
 ### Usage pattern
 
