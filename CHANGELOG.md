@@ -4,6 +4,22 @@ All notable changes to this project are documented in this file.
 
 This project follows Semantic Versioning. The structure below is inspired by Keep a Changelog.
 
+## [Unreleased]
+
+## [1.0.3] - 2026-03-02
+
+### Added
+- Introduced `red-team-analyst` agent for adversarial security review:
+  - `Claude/agents/red-team-analyst.md` — Claude agent definition simulating attacker perspective on security-sensitive code.
+  - `Codex/skills/red-team-analyst/SKILL.md` — corresponding Codex skill.
+
+### Changed
+- Updated `Claude/CLAUDE.md` to include `red-team-analyst` in the agents table with usage guidance.
+- Updated `Codex/AGENTS.md` to document the new skill.
+- Updated `README.md` to reflect the addition.
+- Updated `features.md` to track the new feature.
+- Refreshed `assets/banner.png` and `assets/social-preview.png`.
+
 ## [1.0.2] - 2026-02-26
 
 ### Added
@@ -18,6 +34,7 @@ This project follows Semantic Versioning. The structure below is inspired by Kee
 - Added basic Node test coverage for CLI argument parsing and profile detection.
 
 ### Changed
+- Updated `Claude/CLAUDE.md` macro to require `features.md` at project inception (Gherkin style) and `evals.md` in new project setup.
 - Updated `README.md` with CLI quick start and profile-specific commands for iOS, Android, React, Python, and Rust.
 
 ## [1.0.1] - 2026-02-16

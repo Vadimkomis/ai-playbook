@@ -1,4 +1,4 @@
-<p align="center"> <img src="assets/banner.png" alt="ai-playbook banner" /> </p>
+<p align="center"> <img src="assets/banner.png?v=2" alt="ai-playbook banner" /> </p>
  # ai-playbook
 
 Centralized AI coding assistant configuration for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and Codex CLI (open-source agentic coding interface — not OpenAI's legacy Codex model). This repo includes Codex-specific AGENTS and reusable skills.
