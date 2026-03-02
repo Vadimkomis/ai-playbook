@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file.
 
 This project follows Semantic Versioning. The structure below is inspired by Keep a Changelog.
 
-## [Unreleased]
+## [1.0.2] - 2026-02-26
 
 ### Added
 - Introduced an npm CLI scaffold for fast project bootstrapping:
