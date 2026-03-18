@@ -212,3 +212,6 @@ Use these specialized agents (via the Task tool) for targeted work. Each agent r
 3. **Review** — use `senior-code-reviewer` to catch issues
 4. **Test** — use `senior-qa-engineer` to ensure coverage
 5. **Simplify** — use `code-simplification-architect` if the result is complex
+
+### Bug Fixes
+When I report a bug, don't start by trying to fix it. Instead, start by writing a test that reproduces the bug. Then have subagents try to fix the bug and prove it with a passing test. 
