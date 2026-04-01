@@ -6,6 +6,13 @@ This project follows Semantic Versioning. The structure below is inspired by Kee
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-03-31
+
+### Changed
+- Updated the bug-fix workflow guidance in both agent instruction sets:
+  - `Claude/CLAUDE.md` now requires starting bug work by writing a reproducing test before attempting a fix.
+  - `Codex/AGENTS.md` now mirrors the same bug-fix-first-by-test guidance.
+
 ## [1.0.3] - 2026-03-02
 
 ### Added
