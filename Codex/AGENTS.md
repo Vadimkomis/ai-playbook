@@ -61,6 +61,7 @@ Every project **must** have an `evals.md` file at the repo root. This file is th
 - **Always consult `evals.md` before implementing** — verify existing eval scenarios and identify gaps
 - **Update `evals.md` whenever behavior changes** — new features, bug fixes, and behavioral changes must update eval definitions and status
 - **Never contradict `evals.md`** — if implementation and eval spec drift, align code to the spec (or update the spec first with the user's approval)
+- When I report a bug, don't start by trying to fix it. Instead, start by writing a test that reproduces the bug. Then have subagents try to fix the bug and prove it with a passing test. 
 
 ### Structure
 
