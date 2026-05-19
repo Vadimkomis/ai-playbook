@@ -37,6 +37,7 @@ Codex/
   └── skills/            # Reusable Codex skills (plug-and-play)
         ├── architecture-reviewer/
         ├── code-simplification-architect/
+        ├── app-localization/
         ├── github-actions-engineer/
         ├── devops-engineer/
         ├── mobile-engineer/
@@ -139,7 +140,7 @@ rsync -a /path/to/ai-playbook/Codex/skills/architecture-reviewer \
 - **CLAUDE.md** — Universal development guidelines: pre-commit workflow, code organization principles, testing requirements, error handling, and code review checklist. Project-specific details (stack, architecture, build commands) belong in each project's own `CLAUDE.md`.
 - **agents/** — Specialized agent definitions for architecture review, code simplification, QA, code review, red-team security analysis, and GitHub Actions.
 - **AGENTS.md** — Codex-compatible agent and workflow instructions (mirrors Claude guidance, adapted for skills).
-- **skills/** — Reusable Codex skills for targeted tasks (architecture reviews, adversarial security reviews, code reviews, QA, simplification, GitHub Actions, DevOps, mobile).
+- **skills/** — Reusable Codex skills for targeted tasks (architecture reviews, adversarial security reviews, code reviews, QA, simplification, GitHub Actions, DevOps, mobile, localization).
 
 ## Getting Started with Codex Skills
 
@@ -149,8 +150,9 @@ Follow the same usage pattern as in Claude:
 2. Implement — write the code
 3. Review — apply `skills/senior-code-reviewer` to catch issues
 4. Attack — apply `skills/red-team-analyst` for security-sensitive changes
-5. Test — apply `skills/senior-qa-engineer` to ensure coverage
-6. Simplify — apply `skills/code-simplification-architect` if the result is complex
+5. Localize — apply `skills/app-localization` when adding or auditing translated app copy
+6. Test — apply `skills/senior-qa-engineer` to ensure coverage
+7. Simplify — apply `skills/code-simplification-architect` if the result is complex
 
 In Codex CLI, reference the skill by path or name when creating a Task, e.g., "Use skills/architecture-reviewer on module X; focus on boundaries and failure modes."
 
