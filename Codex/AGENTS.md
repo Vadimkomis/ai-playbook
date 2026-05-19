@@ -233,6 +233,7 @@ Use reusable Codex skills (stored under `skills/`) for targeted work and portabi
 | `github-actions-engineer` | For creating, debugging, or optimizing GitHub Actions workflows and CI/CD pipelines |
 | `devops-engineer` | When designing infrastructure and delivery beyond GitHub Actions — IaC, cloud provisioning, containers/Kubernetes, environments, and observability |
 | `mobile-engineer` | When building mobile features or fixing platform issues — handles UI flows, lifecycle, offline behavior, performance, and device-specific bugs |
+| `app-localization` | When adding, auditing, or validating app localization, translated copy, string catalogs, and locale coverage |
 
 ### Usage pattern
 
@@ -240,5 +241,6 @@ Use reusable Codex skills (stored under `skills/`) for targeted work and portabi
 2. **Implement** — write the code
 3. **Review** — apply `skills/senior-code-reviewer` to catch issues
 4. **Attack** — apply `skills/red-team-analyst` for security-sensitive changes
-5. **Test** — apply `skills/senior-qa-engineer` to ensure coverage
-6. **Simplify** — apply `skills/code-simplification-architect` if the result is complex
+5. **Localize** — apply `skills/app-localization` when adding or auditing translated app copy
+6. **Test** — apply `skills/senior-qa-engineer` to ensure coverage
+7. **Simplify** — apply `skills/code-simplification-architect` if the result is complex

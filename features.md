@@ -106,6 +106,12 @@ Feature: Codex integration
     Then iOS and Android workflows, lifecycle behavior, offline behavior, and performance are addressed
     And the status is "completed"
 
+  Scenario: App Localization Skill
+    Given app localization work is required
+    When the app localization skill is used
+    Then string extraction, translation resources, placeholders, plurals, and layout validation are handled
+    And the status is "completed"
+
 Feature: Documentation and metadata
 
   Scenario: README

@@ -141,3 +141,8 @@ When reviewing tests, provide:
 2. Flakiness risks identified
 3. Specific recommendations with code examples
 4. Priority ordering for improvements
+
+## Completion Workflow
+
+- When your work results in repository changes and local verification passes, commit the changes and immediately push the commit to the current branch's upstream.
+- Do not stop after committing unless the push fails; if it does, report the failure with the relevant command output.

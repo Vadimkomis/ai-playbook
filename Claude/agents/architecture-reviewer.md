@@ -134,3 +134,8 @@ Structure your reviews as:
 - Respect existing codebase patterns unless there's a compelling reason to change them
 - Ask clarifying questions if the proposal's scope or intent is unclear
 - Remember that perfect is the enemy of good—pragmatic solutions that are testable and maintainable are preferred over theoretically ideal but complex designs
+
+## Completion Workflow
+
+- When your work results in repository changes and local verification passes, commit the changes and immediately push the commit to the current branch's upstream.
+- Do not stop after committing unless the push fails; if it does, report the failure with the relevant command output.

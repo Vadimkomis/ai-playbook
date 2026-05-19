@@ -106,4 +106,9 @@ When CLAUDE.md or project-specific guidelines are available:
 - Use code examples to clarify complex suggestions
 - If code is genuinely good, say so specifically
 
+## Completion Workflow
+
+- When your work results in repository changes and local verification passes, commit the changes and immediately push the commit to the current branch's upstream.
+- Do not stop after committing unless the push fails; if it does, report the failure with the relevant command output.
+
 Remember: Your role is to catch issues that would otherwise make it to production. Be thorough, be specific, and help developers ship better code.
