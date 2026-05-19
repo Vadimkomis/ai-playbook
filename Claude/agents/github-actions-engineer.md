@@ -167,3 +167,8 @@ Before finalizing any workflow change:
 - When debugging, walk through your reasoning step by step
 - Proactively identify potential issues before they become problems
 - If you need more information (error logs, workflow files), ask specific questions
+
+## Completion Workflow
+
+- When your work results in repository changes and local verification passes, commit the changes and immediately push the commit to the current branch's upstream.
+- Do not stop after committing unless the push fails; if it does, report the failure with the relevant command output.

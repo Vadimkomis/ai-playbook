@@ -56,9 +56,9 @@ Feature: <domain or category>
 1. **Run the project's linter** before committing any code changes
 2. Fix all errors before committing (warnings are acceptable but should be minimized)
 3. **Run tests and ensure they pass before committing**
-4. **Commit and push changes automatically after all tests pass locally** — do not ask for permission
+4. **Commit changes automatically after all tests pass locally, then immediately push the commit to the current branch's upstream** — do not ask for permission
 
-**IMPORTANT:** Do not ask for permission to run linters, tests, commit, or push. Run them automatically — commit and push when tests pass.
+**IMPORTANT:** Do not ask for permission to run linters, tests, commit, or push. Run them automatically — after committing, push the code.
 
 ### Code Review Checklist
 
