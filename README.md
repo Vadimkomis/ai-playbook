@@ -13,7 +13,6 @@ Centralized AI coding assistant configuration for [Claude Code](https://docs.ant
 - [What's Inside](#whats-inside)
 - [Getting Started with Codex Skills](#getting-started-with-codex-skills)
 - [Updating + Sanity Check](#updating--sanity-check)
-- [Social Preview + README Banner](#social-preview--readme-banner)
 - [Changelog](#changelog)
 - [License](#license)
 
@@ -172,14 +171,6 @@ rsync -a /path/to/ai-playbook/Codex/skills/ /path/to/your-project/Codex/skills/
 ```
 
 If a symlink is broken, it usually means you moved the repo. Put it somewhere stable and relink.
-
-## Social Preview + README Banner
-
-This repo includes:
-- `assets/banner.png` — used at the top of this README
-- `assets/social-preview.png` — upload to GitHub → Settings → Social preview
-
-GitHub's social preview guidance: keep the image under 1MB; 1280×640 works best.
 
 ## Changelog
 
