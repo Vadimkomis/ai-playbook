@@ -1,4 +1,4 @@
-<p align="center"> <img src="assets/banner.png?v=2" alt="ai-playbook banner" /> </p>
+<p align="center"> <img src="assets/banner.png?v=3" alt="ai-playbook banner" /> </p>
 
 Centralized AI coding assistant configuration for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Codex CLI](https://developers.openai.com/codex/cli/).
 
