@@ -4,6 +4,9 @@
   "description": "CLI to install ai-playbook into any repository",
   "license": "MIT",
   "type": "commonjs",
+  "engines": {
+    "node": ">=22"
+  },
   "bin": {
     "ai-playbook": "bin/ai-playbook.js"
   },
@@ -16,6 +19,8 @@
     "Codex",
     "Claude",
     "README.md",
+    "SETUP.md",
+    "docs/integrations.md",
     "LICENSE"
   ],
   "scripts": {

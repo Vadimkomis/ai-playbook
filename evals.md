@@ -5,13 +5,18 @@ Test runners and CI are the authoritative source for pass/fail results.
 
 ## Capability distribution
 
+- Name: Portable guided setup
+- Description: The default installation asks for missing project information and writes three editable Markdown docs without selecting an agent or stack. Cancellation, dry runs and incomplete answers are reported honestly.
+- Test mapping: `tests/cli.test.js`
+- Notes: Reinstallation preserves existing docs and policies. Unknown noninteractive answers remain unfinished.
+
 - Name: Native skill and agent installation
-- Description: Each platform mode installs every shared skill and thin agent adapter into the platform's auto-discovered project paths.
+- Description: Only explicitly selected workflows and native integrations are installed; the portable core remains available with no selected platform.
 - Test mapping: `tests/cli.test.js`; `tests/capabilities.test.js`
-- Notes: Combined mode must install both layouts and record layout version 2 in the manifest.
+- Notes: Combined mode installs both selected layouts. Layout version 3 tracks installation without storing project policy.
 
 - Name: Compatibility-safe legacy migration
-- Description: A legacy `Codex/skills/` installation is diagnosed, native copies are installed on the next init, and legacy or user-owned files are not deleted or overwritten.
+- Description: Version-2 selections survive migration; missing shared docs and selected native files are added without deleting legacy or user-owned files.
 - Test mapping: `tests/cli.test.js`
 - Notes: `--force` remains the only opt-in overwrite mechanism.
 
