@@ -2,7 +2,7 @@
 
 - Keep the core portable across agents, languages and operating systems; see [architecture](ARCHITECTURE.md).
 - Setup should inspect, ask, write the docs and finish ready to work; see [setup](SETUP.md).
-- Keep the [README](README.md) focused on getting started; link advanced details and omit distribution planning.
+- Preserve the [README](README.md) banner with a standard Markdown image; keep setup short and link advanced details.
 - Repository completion and Git delivery follow the [development workflow](docs/development/workflow.md), with task-specific [verification](docs/development/verification.md).
 - New projects receive the portable completion sequence inside [AGENTS.md](templates/core/AGENTS.md), preserving the three-document default and selected policies.
 - Preserve custom docs and installed choices; project policy lives in Markdown, not the manifest; see [installation](README.md).

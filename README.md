@@ -1,53 +1,26 @@
-<p align="center"> <img src="assets/banner.png?v=3" alt="ai-playbook banner" /> </p>
+![ai-playbook](assets/banner.png)
 
-Give your coding agent clear instructions about your project. Answer a few
-questions, get three Markdown files, and start working.
+Project instructions for any coding agent. A short setup conversation creates
+three editable files: `AGENTS.md`, `ARCHITECTURE.md` and `memory.md`.
+Existing files are preserved.
 
 ## Get started
 
-1. Download or clone this repository. You’ll need Node.js 22 or newer.
-2. From the `ai-playbook` folder, run the command below with your project’s path
-   and answer the setup questions:
-
-   ```sh
-   node bin/ai-playbook.js --target "/path/to/your-project"
-   ```
-
-3. Open your coding agent in your project and give it a task:
-
-   ```text
-   Read AGENTS.md, then help me [describe your task].
-   ```
-
-Prefer setup through your coding agent? Give it [SETUP.md](SETUP.md) and ask it
-to follow the guide. No Node.js needed.
-
-## What you get
-
-| File | Purpose |
-| --- | --- |
-| `AGENTS.md` | How your agent should work, run checks and handle Git |
-| `ARCHITECTURE.md` | How your project is organized |
-| `memory.md` | Decisions and lessons to remember |
-
-Existing files are preserved. Edit the Markdown whenever your project or
-preferences change. Use it with any coding agent that can read project files.
-
-For optional workflows and agent integrations, see [integrations](docs/integrations.md).
-For all CLI options, run `node bin/ai-playbook.js --help`.
-
-## Development
+Download or clone this repository. With Node.js 22+, run from its folder:
 
 ```sh
-pnpm install
-npm test
+node bin/ai-playbook.js --target "/path/to/your-project"
 ```
 
-See [architecture](ARCHITECTURE.md) and [test coverage](evals.md).
+Answer the questions, then open your coding agent in that project and say:
 
-- [Development workflow](docs/development/workflow.md) — implementation, review,
-  documentation maintenance, commit and push.
-- [Verification](docs/development/verification.md) — tests, packaging, dependencies
-  and evidence requirements.
+```text
+Read AGENTS.md, then help me [describe your task].
+```
 
-MIT — see [LICENSE](LICENSE).
+Without Node.js, ask your coding agent to follow [SETUP.md](SETUP.md).
+
+[Optional integrations](docs/integrations.md) ·
+[Development workflow](docs/development/workflow.md) ·
+[Verification](docs/development/verification.md) ·
+[MIT license](LICENSE)
