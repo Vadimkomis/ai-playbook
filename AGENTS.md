@@ -4,17 +4,18 @@ Read [ARCHITECTURE.md](ARCHITECTURE.md) and [memory.md](memory.md). Route user-f
 behavior through [features.md](features.md); verification contracts live in
 [evals.md](evals.md). Read deeper docs only when the task needs them.
 
+## Development workflow
+
+- Follow [workflow](docs/development/workflow.md) for implementation, review,
+  documentation maintenance, commit and push.
+- Use [verification](docs/development/verification.md) to choose tests, packaging,
+  documentation and integration checks before making changes.
+
+## Working agreements
+
 - Keep the default plug and play: a short setup conversation and three Markdown docs.
 - Preserve existing project files and choices unless replacement is explicitly requested.
 - Keep agents, languages, frameworks and operating systems independent of the core.
 - Keep project policy in Markdown; the manifest tracks installation only.
-- Add meaningful regression tests for behavior changes. After JavaScript changes, run `npm test`.
-- Prefer `pnpm` for dependencies; ask before adding production dependencies.
 - Keep Markdown concise and canonical. Link detail instead of repeating it.
-- Get an independent review for substantial changes and preserve validator contracts.
-- Resolve actionable review findings and rerun affected checks before committing.
-- Inspect the diff, run `git diff --check`, and stage only task-scoped changes.
-- Commit automatically after checks and required review pass. Push only when requested; never force-push.
-- Report local tests, CI results and actual agent discovery separately; do not imply unrun checks passed.
-
-Record lasting decisions in `memory.md`. No mandatory session log or memory sign-off is needed.
+- Preserve independent-validator contracts and permissions.

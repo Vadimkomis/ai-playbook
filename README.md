@@ -45,4 +45,9 @@ npm test
 
 See [architecture](ARCHITECTURE.md) and [test coverage](evals.md).
 
+- [Development workflow](docs/development/workflow.md) — implementation, review,
+  documentation maintenance, commit and push.
+- [Verification](docs/development/verification.md) — tests, packaging, dependencies
+  and evidence requirements.
+
 MIT — see [LICENSE](LICENSE).

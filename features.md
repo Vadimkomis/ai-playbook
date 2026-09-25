@@ -5,6 +5,9 @@
 - Running `ai-playbook` or `ai-playbook init` starts the same setup conversation.
 - A new project receives `AGENTS.md`, `ARCHITECTURE.md`, `memory.md` and installation metadata.
 - Questions capture purpose, code boundaries, commands, safeguards, review and Git policy.
+- New `AGENTS.md` guidance includes a completion sequence: checks, review and rechecks,
+  documentation maintenance, scoped Git delivery and evidence reporting. It uses the
+  selected review and Git policies; session maintenance follows existing project rules.
 - Existing docs remain authoritative and unchanged. Setup asks for missing documents;
   users edit established choices directly or explicitly replace files with `--force`.
 - Setup makes evidence-based command suggestions without running project commands.

@@ -9,7 +9,8 @@ Use this guide with any coding agent that can read and edit your project.
    Suggest answers supported by the repository. Optional details can wait.
 3. Fill in the [core templates](templates/core) as `AGENTS.md`, `ARCHITECTURE.md`
    and `memory.md`. Replace template fields with answers, remove template markers,
-   and link existing detailed docs. Preserve custom content in existing files.
+   and link existing workflow and verification docs. Keep the template's completion
+   sequence when creating new guidance; preserve custom content in existing files.
 4. Keep unresolved facts visibly open. Until the user chooses otherwise, leave
    verified changes for review; automatic commit or push requires an explicit choice.
 5. Summarize the agreed rules and any open questions, then start the user's task.

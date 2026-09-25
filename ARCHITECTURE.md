@@ -12,6 +12,7 @@ The optional Node.js CLI asks setup questions and installs them. The docs need n
 | `src/catalog.js` | Optional workflows and native integration file mappings |
 | `src/doctor.js` | Checks for installed files, metadata, permissions and contracts |
 | `templates/core/` | The shared project documents |
+| `docs/development/` | This repository's completion workflow and verification routing |
 | `.agents/skills/`, `Codex/agents/`, `Claude/` | Optional workflows and native adapters |
 | `contracts/`, `src/independent-validator-contracts.js` | Independent validation contracts |
 | `tests/` | Installer, packaging, capability and contract checks |

@@ -9,6 +9,7 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Description: The default installation asks for missing project information and writes three editable Markdown docs without selecting an agent or stack. Cancellation, dry runs and incomplete answers are reported honestly.
 - Test mapping: `tests/cli.test.js`
 - Notes: Reinstallation preserves existing docs and policies. Unknown noninteractive answers remain unfinished.
+  Review generated workflow guidance separately; installer tests do not prove agent compliance.
 
 - Name: Native skill and agent installation
 - Description: Only explicitly selected workflows and native integrations are installed; the portable core remains available with no selected platform.
