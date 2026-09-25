@@ -12,7 +12,9 @@ behavior through [features.md](features.md); verification contracts live in
 - Prefer `pnpm` for dependencies; ask before adding production dependencies.
 - Keep Markdown concise and canonical. Link detail instead of repeating it.
 - Get an independent review for substantial changes and preserve validator contracts.
-- Leave changes for review unless the user requests a commit or push. Never force-push.
+- Resolve actionable review findings and rerun affected checks before committing.
+- Inspect the diff, run `git diff --check`, and stage only task-scoped changes.
+- Commit automatically after checks and required review pass. Push only when requested; never force-push.
 - Report local tests, CI results and actual agent discovery separately; do not imply unrun checks passed.
 
 Record lasting decisions in `memory.md`. No mandatory session log or memory sign-off is needed.
