@@ -1,4 +1,4 @@
-# ai-playbook
+<p align="center"> <img src="assets/banner.png?v=3" alt="ai-playbook banner" /> </p>
 
 Give your coding agent clear instructions about your project. Answer a few
 questions, get three Markdown files, and start working.
