@@ -24,7 +24,27 @@ and installation check. The video has on-screen explanations and no audio.
 
 ## Get started
 
-You'll need **Node.js 22 or newer** and an existing project folder.
+### Homebrew
+
+Install ai-playbook once, then run setup in an existing project folder:
+
+```sh
+brew install vadimkomis/tap/ai-playbook
+ai-playbook --target "/path/to/your-project"
+```
+
+Homebrew manages Node.js for you. The first Homebrew package is a preview of the
+guided setup shown here. Answer the questions, then check your installation:
+
+```sh
+ai-playbook doctor --target "/path/to/your-project"
+```
+
+To update the tool later, run `brew update` and `brew upgrade ai-playbook`.
+
+### From source
+
+You'll need **Node.js 22 or newer**.
 
 1. Download this repository using **Code → Download ZIP** on the GitHub branch
    you're viewing, then extract it. If you clone instead, check out that branch.
@@ -52,17 +72,6 @@ Read AGENTS.md, then help me [describe your task].
 ```
 
 Without Node.js, ask your coding agent to follow [SETUP.md](SETUP.md).
-
-### Homebrew
-
-ai-playbook does not yet have a published Homebrew formula. If you use Homebrew,
-you can install its [Node.js prerequisite](https://formulae.brew.sh/formula/node):
-
-```sh
-brew install node
-```
-
-Then follow the setup steps above.
 
 ## Make it yours
 

@@ -16,6 +16,7 @@ The optional Node.js CLI asks setup questions and installs them. The docs need n
 | `.agents/skills/`, `Codex/agents/`, `Claude/` | Optional workflows and native adapters |
 | `contracts/`, `src/independent-validator-contracts.js` | Independent validation contracts |
 | `tests/` | Installer, packaging, capability and contract checks |
+| `Formula/ai-playbook.rb` | Homebrew package and installed-command smoke tests |
 
 Setup collects answers before writing. Existing docs remain authoritative; missing
 docs are added. Project commands are recorded as text and never executed by setup.

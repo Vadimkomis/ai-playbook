@@ -5,6 +5,11 @@ Test runners and CI are the authoritative source for pass/fail results.
 
 ## Capability distribution
 
+- Name: Homebrew installation
+- Description: The installed command creates the portable core, reports unfinished setup, preserves customized docs and installs all optional assets from the packaged source.
+- Test mapping: `Formula/ai-playbook.rb` (`brew test`); see [Homebrew delivery](docs/development/homebrew.md).
+- Notes: The archive is pinned by Git revision and SHA-256. Homebrew tests are separate from the Node test matrix.
+
 - Name: Portable guided setup
 - Description: The default installation asks for missing project information and writes three editable Markdown docs without selecting an agent or stack. Cancellation, dry runs and incomplete answers are reported honestly.
 - Test mapping: `tests/cli.test.js`

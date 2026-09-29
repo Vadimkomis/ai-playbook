@@ -18,6 +18,8 @@
 
 - The Markdown core assumes no agent, language, framework, shell or operating system.
 - Manual setup works without Node.js. The optional CLI requires Node.js 22 or newer.
+- Homebrew installs the CLI and manages Node through `vadimkomis/tap/ai-playbook`;
+  the formula preserves the same core, optional assets and project-file behavior.
 - Stack profiles and automatic stack selection are removed.
 - Optional workflows install under `.ai-playbook/workflows/`; selected native integrations
   also register them in the corresponding tool's project locations.

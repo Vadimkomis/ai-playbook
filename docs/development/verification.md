@@ -11,6 +11,7 @@ from the repository root. The [workflow](workflow.md) defines review and deliver
 | Skills or native adapters | Run `node --test tests/capabilities.test.js`, then `npm test`. Review activation guidance, permissions and shared references. |
 | Independent-validator contracts | Run `node --test tests/independent-validator-contracts.test.js`, then `npm test`. Preserve immutable revisions, independence and pass/fail/error semantics. |
 | Package metadata, dependencies or CI | Run `npm test`; it includes a package dry run and checks required distributed files. Review the lockfile and the affected CI configuration. |
+| Homebrew formula | Install the formula, run `brew test` and `brew style`, then `npm test`. Follow [Homebrew delivery](homebrew.md) for publishing the verified formula. |
 
 Add meaningful regression coverage for executable behavior changes. For guidance
 changes, inspect a fresh generated project and review how an agent would apply
@@ -39,3 +40,6 @@ Automated, simulator and physical-device evidence are distinct.
 with Node.js 22 and 24. A local pass does not prove those jobs passed. Report a
 remote result only after inspecting the run for the relevant commit; identify
 pending, skipped or infrastructure-blocked checks separately.
+
+A separate macOS job installs and tests the Homebrew formula. It verifies the
+formula's pinned source archive, not unpinned CLI changes in the current branch.

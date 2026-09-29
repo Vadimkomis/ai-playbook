@@ -24,3 +24,17 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: npm test
+
+  homebrew:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install from the candidate formula
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
+        run: |
+          brew tap ai-playbook-test/tap "$GITHUB_WORKSPACE"
+          brew install --build-from-source ai-playbook-test/tap/ai-playbook
+      - run: brew test ai-playbook-test/tap/ai-playbook
+      - run: brew style ai-playbook-test/tap/ai-playbook
