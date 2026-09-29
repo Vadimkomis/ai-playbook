@@ -36,11 +36,13 @@ actionable findings, and do not describe blocked work as complete.
 
 ## Git policy
 
-Commit verified, scoped changes automatically after required review passes.
-Push only when the user requests it; never force-push. For an authorized push,
-confirm the current branch and remote, set its upstream if absent, then verify
-that the local commit matches the upstream. A rejected push remains a blocker;
-report it and preserve the local commit.
+Commit verified, scoped changes and push the current branch automatically after
+applicable checks and required review pass, unless the user explicitly asks to
+leave changes uncommitted or unpushed. No additional push confirmation is needed.
+
+Confirm the current branch, remote and intended upstream before pushing. Set the
+upstream if absent, then verify that the local commit matches it. Never force-push.
+A rejected push remains a blocker; report it and preserve the local commit.
 
 This policy governs ai-playbook development. Installed projects use the Git and
 review policies selected during [setup](../../SETUP.md).

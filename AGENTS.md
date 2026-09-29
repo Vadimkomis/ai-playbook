@@ -10,6 +10,9 @@ behavior through [features.md](features.md); verification contracts live in
   documentation maintenance, commit and push.
 - Use [verification](docs/development/verification.md) to choose tests, packaging,
   documentation and integration checks before making changes.
+- After applicable checks and required review pass, commit scoped changes and
+  push the current branch automatically. Follow the workflow's Git policy;
+  never force-push.
 
 ## Working agreements
 
