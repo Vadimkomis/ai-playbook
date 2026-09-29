@@ -6,6 +6,12 @@ This project follows Semantic Versioning. The structure below is inspired by Kee
 
 ## [Unreleased]
 
+- Start setup with one command and answer a short questionnaire that writes three portable project docs.
+- Remove default agent and stack selection; make native integrations, specialist workflows and specs optional.
+- Preserve custom docs, version-2 installations and existing Git policies; add explicit unfinished-setup reporting.
+- Simplify native guidance to a shared source and retain independent-validator contracts and reviewer permissions.
+- Add cross-platform CI and regression coverage for setup, cancellation, migration and customization.
+
 ## [1.2.0] - 2026-08-17
 
 ### Added

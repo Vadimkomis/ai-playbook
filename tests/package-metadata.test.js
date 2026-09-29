@@ -17,11 +17,17 @@ test("dry-run package build uses the owned npm scope", async (t) => {
   t.after(() => fs.rm(cache, { recursive: true, force: true }));
 
   const { stdout } = await execFileAsync(
-    process.platform === "win32" ? "npm.cmd" : "npm",
-    ["pack", "--dry-run", "--json", "--cache", cache],
+    process.execPath,
+    [process.env.npm_execpath, "pack", "--dry-run", "--json", "--cache", cache],
     { cwd: ROOT }
   );
   const [packedArtifact] = JSON.parse(stdout);
 
   assert.equal(packedArtifact.name, EXPECTED_PACKAGE);
+  const files = packedArtifact.files.map((file) => file.path);
+  for (const required of ["templates/core/AGENTS.md", "templates/core/ARCHITECTURE.md",
+    "templates/core/memory.md", "templates/adapters/CLAUDE.md", "src/setup.js", "SETUP.md", "docs/integrations.md"]) {
+    assert.ok(files.includes(required), `Missing published file: ${required}`);
+  }
+  assert.equal(files.some((file) => file.startsWith("templates/profiles/")), false);
 });
