@@ -15,9 +15,9 @@ and instructions are preserved.
 
 ## Installation walkthrough
 
-[![Watch the ai-playbook setup walkthrough](assets/setup-walkthrough.png)](assets/setup-walkthrough.mp4)
+https://github.com/user-attachments/assets/92f41acb-470b-4654-aeed-87712bfc5281
 
-[Watch the video](assets/setup-walkthrough.mp4) · [Read the walkthrough](docs/setup-walkthrough.md)
+[Download the MP4](assets/setup-walkthrough.mp4) · [Read the walkthrough](docs/setup-walkthrough.md)
 
 Follow a real setup from the first command through the questions, generated files
 and installation check. The video has on-screen explanations and no audio.
@@ -52,6 +52,17 @@ Read AGENTS.md, then help me [describe your task].
 ```
 
 Without Node.js, ask your coding agent to follow [SETUP.md](SETUP.md).
+
+### Homebrew
+
+ai-playbook does not yet have a published Homebrew formula. If you use Homebrew,
+you can install its [Node.js prerequisite](https://formulae.brew.sh/formula/node):
+
+```sh
+brew install node
+```
+
+Then follow the setup steps above.
 
 ## Make it yours
 

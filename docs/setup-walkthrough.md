@@ -1,6 +1,6 @@
 # Installation walkthrough
 
-[Watch the video](../assets/setup-walkthrough.mp4) or follow these steps.
+[Watch the video in the README](../README.md#installation-walkthrough) or follow these steps.
 
 The video uses Node.js 24 and a small example project named `demo-project`.
 Its README describes the project, and its `package.json` defines `npm test`.
