@@ -1,7 +1,20 @@
 ![ai-playbook](assets/banner.png)
 
-Give your coding agent a shared understanding of your project: how it works,
-what to check, and which decisions to preserve.
+<h2 align="center">A shared understanding for your coding agent</h2>
+
+<p align="center">Your project. Your rules. Three Markdown files.</p>
+
+<p align="center">
+  <a href="https://github.com/Vadimkomis/ai-playbook/actions/workflows/test.yml"><img src="https://github.com/Vadimkomis/ai-playbook/actions/workflows/test.yml/badge.svg" alt="CI status"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+</p>
+
+<p align="center">
+  <a href="#get-started">Get started</a> ·
+  <a href="#installation-walkthrough">Watch the walkthrough</a> ·
+  <a href="#documentation">Documentation</a> ·
+  <a href="#contributing">Contributing</a>
+</p>
 
 ai-playbook turns a short setup conversation into three editable Markdown files.
 They work with any coding agent, language or framework. Existing project files
@@ -12,15 +25,6 @@ and instructions are preserved.
 | `AGENTS.md` | Working rules, checks, review steps and your commit/push policy |
 | `ARCHITECTURE.md` | The project's purpose, code structure and important boundaries |
 | `memory.md` | Lasting decisions, recurring pitfalls and useful links |
-
-## Installation walkthrough
-
-https://github.com/user-attachments/assets/92f41acb-470b-4654-aeed-87712bfc5281
-
-[Download the MP4](assets/setup-walkthrough.mp4) · [Read the walkthrough](docs/setup-walkthrough.md)
-
-Follow a real setup from the first command through the questions, generated files
-and installation check. The video has on-screen explanations and no audio.
 
 ## Get started
 
@@ -42,7 +46,8 @@ ai-playbook doctor --target "/path/to/your-project"
 
 To update the tool later, run `brew update` and `brew upgrade ai-playbook`.
 
-### From source
+<details>
+<summary>Install from source (Node.js 22+)</summary>
 
 You'll need **Node.js 22 or newer**.
 
@@ -65,13 +70,24 @@ installed files with:
 node bin/ai-playbook.js doctor --target "/path/to/your-project"
 ```
 
+</details>
+
+Without Node.js, ask your coding agent to follow [SETUP.md](SETUP.md).
+
 Open your coding agent in **your project folder** and say:
 
 ```text
 Read AGENTS.md, then help me [describe your task].
 ```
 
-Without Node.js, ask your coding agent to follow [SETUP.md](SETUP.md).
+## Installation walkthrough
+
+https://github.com/user-attachments/assets/92f41acb-470b-4654-aeed-87712bfc5281
+
+[Download the MP4](assets/setup-walkthrough.mp4) · [Read the walkthrough](docs/setup-walkthrough.md)
+
+Follow a real setup from the first command through the questions, generated files
+and installation check. The video has on-screen explanations and no audio.
 
 ## Make it yours
 
@@ -79,7 +95,12 @@ Edit the three files as your project evolves. Setup keeps existing guidance when
 run again; update established rules in the files themselves.
 
 Add specialist workflows, feature/evaluation templates, or Codex and Claude
-integrations when you need them. See [optional integrations](docs/integrations.md).
+integrations when you need them.
+
+## Documentation
+
+[Manual setup](SETUP.md) · [Optional integrations](docs/integrations.md) ·
+[Development workflow](docs/development/workflow.md) · [Verification](docs/development/verification.md)
 
 ## Contributing
 
