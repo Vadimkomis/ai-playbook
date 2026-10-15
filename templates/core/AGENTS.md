@@ -17,9 +17,10 @@ Reuse recorded decisions and follow links to detailed docs when relevant.
    affected checks.
 3. Update affected docs and the PR’s single entry in [memory.md](memory.md).
    Record lasting decisions and pitfalls; never add a second entry for the same PR.
-4. Before committing, run `git diff --check` and stage only task changes. Follow
-   the Git policy below; never force-push. Confirm any requested push succeeded.
-5. Report what changed, what was verified and anything blocked. Don't commit or
+4. Before committing, run `git diff --check` and stage only task changes.
+5. {{git}}
+   Never force-push. Confirm any push succeeded.
+6. Report what changed, what was verified and anything blocked. Don't commit or
    push with failing required checks or unresolved review findings.
 
 Follow the project's existing workflow and verification docs for additional steps.
@@ -39,7 +40,4 @@ Follow the project's existing workflow and verification docs for additional step
 Use the [PR review guide](https://github.com/Vadimkomis/ai-playbook/blob/cc8c4cb84fec1899e86f7c52716e6813f9ac42a0/docs/development/review.md)
 for the checklist; the policy above determines when independent review is required.
 
-## Git policy
-
-{{git}}
 {{rules}}
