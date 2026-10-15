@@ -7,8 +7,10 @@ behavior through [features.md](features.md); verification contracts live in
 ## Development workflow
 
 - Run applicable checks from [verification](docs/development/verification.md).
-- Get independent review for substantial changes. Resolve actionable findings and
-  rerun affected checks before committing.
+- For substantial changes, have a separate reviewer who did not implement them
+  review the full PR diff against its base branch for correctness, regressions,
+  unnecessary complexity and missing tests. Resolve actionable findings and rerun
+  affected checks before committing.
 - Update affected docs and the PR’s single entry in [memory.md](memory.md).
   Never create multiple memory entries for the same PR.
 - Inspect the diff, run `git diff --check`, and stage only task-scoped changes.

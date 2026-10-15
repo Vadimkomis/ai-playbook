@@ -13,7 +13,10 @@ Reuse recorded decisions and follow links to detailed docs when relevant.
 ## Development workflow
 
 1. Run the checks relevant to the change and inspect the diff.
-2. Follow the review policy below. Resolve findings and rerun affected checks.
+2. Follow the review policy below. Review the full PR diff against its base branch
+   for correctness, regressions, unnecessary complexity and missing tests. When
+   independent review is required, use a separate reviewer who did not implement
+   the changes. Resolve actionable findings and rerun affected checks.
 3. Update affected docs and the PR’s single entry in [memory.md](memory.md).
    Record lasting decisions and pitfalls; never add a second entry for the same PR.
 4. Before committing, run `git diff --check` and stage only task changes. Follow
