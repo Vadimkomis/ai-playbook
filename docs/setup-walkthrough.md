@@ -2,18 +2,22 @@
 
 [Watch the video in the README](../README.md#installation-walkthrough) or follow these steps.
 
-The video uses Node.js 24 and a small example project named `demo-project`.
+The video shows Homebrew setup and a small example project named `demo-project`.
 Its README describes the project, and its `package.json` defines `npm test`.
 Use your own project's purpose, paths, commands and policies when answering.
 
-1. Get the version of ai-playbook you're reading: on GitHub, choose **Code →
-   Download ZIP** on that branch, extract it, and open the extracted folder in a
-   terminal. You'll need Node.js 22 or newer.
-2. Run setup, pointing it at an existing project folder. In the video, the two
-   folders are next to each other:
+1. With [Homebrew](https://brew.sh) installed on macOS or Linux, install ai-playbook:
 
    ```sh
-   node bin/ai-playbook.js --target ../demo-project
+   brew install vadimkomis/tap/ai-playbook
+   ```
+
+   Homebrew manages Node.js for you.
+2. Open a terminal in your existing project folder and run `ai-playbook`, or point
+   setup at the folder from anywhere:
+
+   ```sh
+   ai-playbook --target "/path/to/your-project"
    ```
 
 3. Answer the setup questions. These are the video's example answers:
@@ -33,11 +37,11 @@ Use your own project's purpose, paths, commands and policies when answering.
    in the guidance and are not executed during installation.
 
 4. Inspect `AGENTS.md`, `ARCHITECTURE.md` and `memory.md` in your project. Setup also
-   writes `.ai-playbook-manifest.json` to track the installation. The video shows
-   the generated architecture and checks the installation with:
+   writes `.ai-playbook-manifest.json` to track the installation. Check the
+   installed guidance from your project folder with:
 
    ```sh
-   node bin/ai-playbook.js doctor --target ../demo-project
+   ai-playbook doctor
    ```
 
    A complete default setup reports `OK` for all three Markdown files. If `doctor`

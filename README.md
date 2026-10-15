@@ -82,12 +82,12 @@ Read AGENTS.md, then help me [describe your task].
 
 ## Installation walkthrough
 
-https://github.com/user-attachments/assets/92f41acb-470b-4654-aeed-87712bfc5281
+https://github.com/user-attachments/assets/7a30ff98-dad9-4a11-a074-465aed14fcff
 
 [Download the MP4](assets/setup-walkthrough.mp4) · [Read the walkthrough](docs/setup-walkthrough.md)
 
-Follow a real setup from the first command through the questions, generated files
-and installation check. The video has on-screen explanations and no audio.
+Follow Homebrew installation, setup questions, generated files and verification
+with spoken narration and on-screen commands.
 
 ## Make it yours
 

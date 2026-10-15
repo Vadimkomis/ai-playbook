@@ -9,3 +9,4 @@
 - Preserve custom docs and installed choices; project policy lives in Markdown, not the manifest; see [installation](README.md).
 - Praesto supplies workflow lessons. Its workout, KMP, snapshot and delivery rules remain project choices; see [setup](SETUP.md).
 - Independent review needs a separate reviewer; invoking a validation method in the implementing context is not independence; see [integrations](docs/integrations.md).
+- Keep generated guidance focused on project context, memory and the selected completion policy; avoid generic approval rules and repeated process instructions.

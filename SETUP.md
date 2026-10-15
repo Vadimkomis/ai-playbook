@@ -15,7 +15,6 @@ Use this guide with any coding agent that can read and edit your project.
    verified changes for review; automatic commit or push requires an explicit choice.
 5. Summarize the agreed rules and any open questions, then start the user's task.
 
-Keep the documents short and editable. No stack profiles, mandatory sessions,
-hooks, agent-specific commands, memory database or extra runtime are required.
-Human-owned criteria stay human-owned. Project safeguards, screenshots, device
-checks and delivery policy belong in that project's docs.
+Keep the documents short and editable. Put project-specific safeguards and
+verification requirements in the project's guidance. Add [optional integrations](docs/integrations.md)
+only when needed.
