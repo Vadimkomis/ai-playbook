@@ -1,12 +1,12 @@
 # Project memory
 
-- Keep the core portable across agents, languages and operating systems; see [architecture](ARCHITECTURE.md).
-- Setup should inspect, ask, write the docs and finish ready to work; see [setup](SETUP.md).
-- Preserve the [README](README.md) banner and inline installation video; keep Homebrew setup, the three files and contributing easy to find.
-- Homebrew installs ai-playbook itself through `vadimkomis/tap`, with Node managed by Brew; maintain the pinned package using [Homebrew delivery](docs/development/homebrew.md).
-- Keep the development workflow in [AGENTS.md](AGENTS.md), with task-specific checks in [verification](docs/development/verification.md).
-- New projects receive the portable completion sequence inside [AGENTS.md](templates/core/AGENTS.md), preserving the three-document default and selected policies.
-- Preserve custom docs and installed choices; project policy lives in Markdown, not the manifest; see [installation](README.md).
-- Praesto supplies workflow lessons. Its workout, KMP, snapshot and delivery rules remain project choices; see [setup](SETUP.md).
-- Independent review needs a separate reviewer; invoking a validation method in the implementing context is not independence; see [integrations](docs/integrations.md).
-- Keep generated guidance focused on project context, memory and the selected completion policy; avoid generic approval rules and repeated process instructions.
+Keep exactly one concise entry per PR, identified by its number or link. Update
+that entry as the PR changes; never add another entry for the same PR.
+
+## [PR #13](https://github.com/Vadimkomis/ai-playbook/pull/13) — Memory and simpler setup
+
+Keep setup to a short conversation and three portable Markdown docs. Preserve
+existing files and choices; make integrations optional. Keep the development
+workflow in [AGENTS.md](AGENTS.md) and task-specific checks in
+[verification](docs/development/verification.md). Preserve the README banner,
+installation video and Homebrew instructions. Keep memory to one entry per PR.

@@ -1,4 +1,5 @@
 # Project memory
 
-Record lasting decisions, recurring pitfalls and useful links. Read these before
-repeating questions. Update or remove stale entries; keep task progress elsewhere.
+Keep exactly one concise entry per PR, identified by its number or link. Update
+that entry as the PR changes; never add another entry for the same PR.
+Record lasting decisions and pitfalls; keep task progress elsewhere.

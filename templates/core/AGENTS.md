@@ -14,8 +14,8 @@ Reuse recorded decisions and follow links to detailed docs when relevant.
 
 1. Run the checks relevant to the change and inspect the diff.
 2. Follow the review policy below. Resolve findings and rerun affected checks.
-3. Update affected docs. Record lasting decisions and recurring pitfalls in
-   [memory.md](memory.md). Keep it current and concise.
+3. Update affected docs and the PR’s single entry in [memory.md](memory.md).
+   Record lasting decisions and pitfalls; never add a second entry for the same PR.
 4. Before committing, run `git diff --check` and stage only task changes. Follow
    the Git policy below; never force-push. Confirm any requested push succeeded.
 5. Report what changed, what was verified and anything blocked. Don't commit or
