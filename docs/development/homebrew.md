@@ -7,8 +7,8 @@ Node is the CLI's existing runtime dependency; installation runs no npm scripts
 and needs no npm development dependencies.
 
 The initial `1.3.0-preview.1` formula packages guided setup from revision
-`4dcc356527041786505afd265a122ea295dd497d`. It is a Homebrew preview, not a new
-npm release; the source package metadata still reports `1.2.0`.
+`4dcc356527041786505afd265a122ea295dd497d`. That preview still contains package version `1.2.0`;
+new source releases do not update the tap automatically.
 
 ## Updating the package
 
