@@ -5,7 +5,7 @@ Reuse recorded decisions and follow links to detailed docs when relevant.
 
 ## Working agreements
 
-- Keep changes focused and preserve unrelated work.
+- Only change what the task requires. Leave other work untouched.
 - Clarify missing requirements; agree on a short plan for significant changes.
 - Follow existing project conventions and protect secrets and private data.
 - Add a regression test for a reproducible bug. Fix failures without weakening tests.
