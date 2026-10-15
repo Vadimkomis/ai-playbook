@@ -6,9 +6,8 @@ This project follows Semantic Versioning. The structure below is inspired by Kee
 
 ## [Unreleased]
 
-- Start setup with one command and answer a short questionnaire that writes three portable project docs.
-- Preserve existing project files and rules when updating. Report any setup information still missing.
-- Simplify native guidance to a shared source and retain independent-validator contracts and reviewer permissions.
+- Add project memory to carry useful context between sessions.
+- Simplify setup to a short conversation that creates three Markdown docs.
 
 ## [1.2.0] - 2026-08-17
 
