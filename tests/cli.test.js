@@ -98,7 +98,7 @@ test("legacy Claude instructions stay authoritative when adding shared docs", as
   const { io, output } = capture();
   await init(root, [], io);
   assert.deepEqual(output.questions, ["purpose", "structure"]);
-  assert.match(await read(root, "AGENTS.md"), /CLAUDE\.md/);
+  assert.equal(await read(root, "AGENTS.md"), await read(root, "CLAUDE.md"));
   assert.doesNotMatch(await read(root, "AGENTS.md"), /Leave changes uncommitted/);
 });
 test("cancellation leaves the entire project unchanged", async (t) => {
@@ -291,21 +291,48 @@ test("thin Claude adapter cannot substitute for missing project rules", async (t
   assert.equal(await doctor(root), 0);
 });
 
-test("force never replaces legacy Claude rules while generating a guide that refers to them", async (t) => {
+test("force replaces both instruction files with standalone project guidance", async (t) => {
   const root = await target(t);
   await write(root, "CLAUDE.md", "# Existing rules\nRun make check.\n");
   await init(root, ["--agent", "claude", "--force"]);
   assert.match(await read(root, "AGENTS.md"), /make test && make lint/);
   assert.doesNotMatch(await read(root, "CLAUDE.md"), /Commit changes automatically/);
-  assert.match(await read(root, "CLAUDE.md"), /AGENTS.md/);
+  assert.equal(await read(root, "CLAUDE.md"), await read(root, "AGENTS.md"));
+  assert.doesNotMatch(await read(root, "CLAUDE.md"), /AGENTS\.md/);
 });
 
-test("native integrations link to the shared project policy", async (t) => {
+test("Claude instructions are standalone and preserve independent edits on reinstall", async (t) => {
   const root = await target(t);
-  await init(root, ["--agent", "claude"]);
-  const adapter = await read(root, "CLAUDE.md");
-  assert.match(adapter, /AGENTS.md/);
-  assert.doesNotMatch(adapter, /Commit changes automatically|frontend-react|Feature Tracking/);
+  await init(root, ["--agent", "both"]);
+  const guidance = await read(root, "CLAUDE.md");
+  assert.equal(guidance, await read(root, "AGENTS.md"));
+  assert.match(guidance, /make test && make lint/);
+  assert.match(guidance, /Never discard workout archives/);
+  assert.doesNotMatch(guidance, /AGENTS\.md|CLAUDE\.md/);
+  const customized = guidance + "\nClaude-specific rule.\n";
+  await write(root, "CLAUDE.md", customized);
+  await init(root, [], capture({ ask: async () => assert.fail("Repeated setup") }).io);
+  assert.equal(await read(root, "CLAUDE.md"), customized);
+  assert.equal(await read(root, "AGENTS.md"), guidance);
+  assert.equal(await doctor(root), 0);
+});
+
+test("adding Claude reuses existing project guidance without importing it", async (t) => {
+  const root = await target(t);
+  await init(root);
+  await write(root, "AGENTS.md", "# Custom rules\nRun make verify.\n");
+  await init(root, ["--agent", "claude"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
+  assert.equal(await read(root, "CLAUDE.md"), "# Custom rules\nRun make verify.\n");
+});
+
+test("doctor reports unfinished standalone Claude guidance", async (t) => {
+  const root = await target(t);
+  await init(root, ["--agent", "claude", "--yes"]);
+  await write(root, "AGENTS.md", "# Completed project rules\nRun make check.\n");
+  await write(root, "ARCHITECTURE.md", "# Architecture\nSource lives in src/.\n");
+  const { io, output } = capture();
+  assert.equal(await doctor(root, io), 1);
+  assert.match(output.stdout, /TODO CLAUDE\.md/);
 });
 
 test("reinstall reports preserved unfinished docs instead of claiming ready", async (t) => {

@@ -44,7 +44,7 @@ async function optionalAssets(integrations, extras, legacy = false) {
     }
   }
   for (const integration of integrations) {
-    if (integration === "claude") assets.push({ from: "templates/adapters/CLAUDE.md", to: "CLAUDE.md" });
+    if (integration === "claude") assets.push({ fromCore: "AGENTS.md", to: "CLAUDE.md" });
     for (const [agent, skill] of Object.entries(AGENT_SKILLS)) {
       if (!skills.includes(skill)) continue;
       const from = integration === "codex" ? `Codex/agents/${agent}.toml` : `Claude/agents/${agent}.md`;

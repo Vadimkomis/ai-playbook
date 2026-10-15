@@ -15,16 +15,18 @@ selected skills and agents in that tool's locations:
 | Selection | Installed integration |
 | --- | --- |
 | `--agent codex` | Selected skills in `.agents/skills/`, agents in `.codex/agents/` |
-| `--agent claude` | `CLAUDE.md` imports `AGENTS.md`; selected skills and agents in `.claude/` |
+| `--agent claude` | Standalone `CLAUDE.md` with shared project instructions; selected skills and agents in `.claude/` |
 | `--agent both` | Both layouts using the same shared instructions |
 
 The Codex core already uses `AGENTS.md`, so selecting Codex without any extras
 needs no additional config file. Other coding tools can read the shared docs
 and portable workflows directly; automatic discovery depends on the tool.
 
-The old `Claude/CLAUDE.md` and `Codex/AGENTS.md` macro sources remain for existing
-global links. New installations use the core templates and the small adapter in
-`templates/adapters/`; they do not install those legacy macros globally.
+Reusable project guidance lives in `templates/core/`. The old Codex macro has
+been removed. `Claude/CLAUDE.md` is only a pointer for existing global links;
+it adds no project policy. Claude setup generates a full `CLAUDE.md` from the same
+project guidance as `AGENTS.md`. Neither generated file imports the other.
+Existing files keep their own edits on reinstall; they are not automatically synced.
 
 Reinstallation retains selected extras and integrations. New native workflow
 files inherit your portable workflow and references. Existing native files keep

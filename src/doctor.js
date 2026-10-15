@@ -50,7 +50,7 @@ async function doctor(args, io) {
       else if (check.to.startsWith(".ai-playbook/contracts/")) {
         if (content !== await fs.readFile(path.join(ROOT, check.from), "utf8")) status = "BAD";
       } else if (!validGuidance(check.to, content)) status = "BAD";
-      else if (CORE.includes(check.to) && content.includes(PENDING)) status = "TODO";
+      else if ((CORE.includes(check.to) || check.to === "CLAUDE.md") && content.includes(PENDING)) status = "TODO";
     } catch { status = "BAD"; }
     io.stdout.write(`${status} ${check.to}\n`);
     if (status !== "OK") failures += 1;

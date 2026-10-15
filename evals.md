@@ -19,7 +19,7 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Name: Native skill and agent installation
 - Description: Only explicitly selected workflows and native integrations are installed; the portable core remains available with no selected platform.
 - Test mapping: `tests/cli.test.js`; `tests/capabilities.test.js`
-- Notes: Combined mode installs both selected layouts. Layout version 3 tracks installation without storing project policy.
+- Notes: Combined mode installs both selected layouts. Generated Claude instructions are standalone; reinstallation preserves independent edits. Layout version 3 tracks installation without storing project policy.
 
 - Name: Compatibility-safe legacy migration
 - Description: Version-2 selections survive migration; missing shared docs and selected native files are added without deleting legacy or user-owned files.

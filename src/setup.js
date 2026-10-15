@@ -115,9 +115,6 @@ async function renderDocuments(answers) {
     const template = await fs.readFile(path.join(ROOT, "templates/core", name), "utf8");
     documents[name] = template.replace(/\{\{(\w+)\}\}/g, (_match, key) => values[key] ?? "");
   }
-  if (answers.legacyRules) {
-    documents["AGENTS.md"] = "# Project guide\n\nRead [ARCHITECTURE.md](ARCHITECTURE.md) and [memory.md](memory.md) first.\nFollow the existing project workflow, checks, safeguards and Git policy in\n[CLAUDE.md](CLAUDE.md). These are shared project instructions, regardless of your coding tool.\n\nKeep lasting decisions in the project docs; clarify conflicts before changing them.\n";
-  }
   return documents;
 }
 
@@ -126,11 +123,12 @@ async function prepareCore(root, args, io) {
   for (const name of [...CORE, "CLAUDE.md"]) {
     await safeDestination(root, name);
     existing[name] = await readOptional(path.join(root, name));
-    if (existing[name] !== null) io.stdout.write(`Found ${name}; ${args.force && name !== "CLAUDE.md" ? "replacement requested" : "keeping existing guidance"}.\n`);
+    if (existing[name] !== null) io.stdout.write(`Found ${name}.\n`);
   }
   const answers = await questions(root, existing, args, io);
   if (!answers) return null;
   const documents = await renderDocuments(answers);
+  if (answers.legacyRules) documents["AGENTS.md"] = existing["CLAUDE.md"];
   return CORE.map((name) => ({ to: name, content: !args.force && existing[name] !== null ? existing[name] : documents[name] }));
 }
 

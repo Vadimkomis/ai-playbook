@@ -9,4 +9,7 @@ Keep setup to a short conversation and three portable Markdown docs. Preserve
 existing files and choices; make integrations optional. Keep the development
 workflow in [AGENTS.md](AGENTS.md), with separate [review](docs/development/review.md)
 and [verification](docs/development/verification.md) guides. Preserve the README banner,
-installation video and Homebrew instructions. Keep memory to one entry per PR.
+installation video and Homebrew instructions. Keep reusable guidance in
+`templates/core/`; generate standalone agent instruction files without imports
+between them. Retain a compatibility pointer for existing global Claude links.
+Keep memory to one entry per PR.

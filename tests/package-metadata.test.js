@@ -26,7 +26,7 @@ test("dry-run package build uses the owned npm scope", async (t) => {
   assert.equal(packedArtifact.name, EXPECTED_PACKAGE);
   const files = packedArtifact.files.map((file) => file.path);
   for (const required of ["templates/core/AGENTS.md", "templates/core/ARCHITECTURE.md",
-    "templates/core/memory.md", "templates/adapters/CLAUDE.md", "src/setup.js", "SETUP.md", "docs/integrations.md"]) {
+    "templates/core/memory.md", "src/setup.js", "SETUP.md", "docs/integrations.md"]) {
     assert.ok(files.includes(required), `Missing published file: ${required}`);
   }
   assert.equal(files.some((file) => file.startsWith("templates/profiles/")), false);

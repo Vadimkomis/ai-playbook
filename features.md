@@ -23,6 +23,8 @@
 - Stack profiles and automatic stack selection are removed.
 - Optional workflows install under `.ai-playbook/workflows/`; selected native integrations
   also register them in the corresponding tool's project locations.
+- Claude integration generates a standalone `CLAUDE.md` with the same initial project
+  instructions as `AGENTS.md`. Existing files retain their independent edits.
 - Specs, native agents and independent-validation contracts are optional.
 - Existing integrations, extras and legacy files survive reinstallation and layout migration.
 

@@ -79,6 +79,10 @@ async function install(args, io) {
   const entries = await prepareCore(root, args, io);
   if (!entries) return 1;
   for (const asset of assets) {
+    if (asset.fromCore) {
+      entries.push({ to: asset.to, content: entries.find((entry) => entry.to === asset.fromCore).content });
+      continue;
+    }
     const source = asset.projectFrom ? await safeDestination(root, asset.projectFrom) : path.join(ROOT, asset.from);
     entries.push({ to: asset.to, content: await fs.readFile(source, "utf8") });
   }
