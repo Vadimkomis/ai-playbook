@@ -1,7 +1,7 @@
 # Verification
 
 Choose evidence for the changed behavior before implementation. Run commands
-from the repository root. The [workflow](workflow.md) defines review and delivery;
+from the repository root. [AGENTS.md](../../AGENTS.md) defines review and delivery;
 [evals](../../evals.md) maps the stable verification contracts to tests.
 
 | Change | Required checks |

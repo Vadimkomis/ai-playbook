@@ -100,7 +100,7 @@ integrations when you need them.
 ## Documentation
 
 [Manual setup](SETUP.md) · [Optional integrations](docs/integrations.md) ·
-[Development workflow](docs/development/workflow.md) · [Verification](docs/development/verification.md)
+[Development guidance](AGENTS.md) · [Verification](docs/development/verification.md)
 
 ## Contributing
 
@@ -116,7 +116,7 @@ npm test
 ```
 
 Keep changes focused, preserve existing project files, and include regression
-tests when behavior changes. Follow the [development workflow](docs/development/workflow.md)
+tests when behavior changes. Follow the [development guidance](AGENTS.md)
 and [verification guide](docs/development/verification.md), then open a pull
 request describing the change and the checks you ran.
 

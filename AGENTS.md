@@ -6,13 +6,15 @@ behavior through [features.md](features.md); verification contracts live in
 
 ## Development workflow
 
-- Follow [workflow](docs/development/workflow.md) for implementation, review,
-  documentation maintenance, commit and push.
-- Use [verification](docs/development/verification.md) to choose tests, packaging,
-  documentation and integration checks before making changes.
-- After applicable checks and required review pass, commit scoped changes and
-  push the current branch automatically. Follow the workflow's Git policy;
-  never force-push.
+- Run applicable checks from [verification](docs/development/verification.md).
+- Get independent review for substantial changes. Resolve actionable findings and
+  rerun affected checks before committing.
+- Update affected docs and record lasting decisions in [memory.md](memory.md).
+- Inspect the diff, run `git diff --check`, and stage only task-scoped changes.
+- After checks and required review pass, commit and push the current branch unless
+  asked otherwise. Verify the remote and upstream; never force-push.
+- Report checks actually run, blockers and commit/push status. Distinguish local
+  tests, CI results and actual agent discovery.
 
 ## Working agreements
 
