@@ -100,7 +100,8 @@ integrations when you need them.
 ## Documentation
 
 [Manual setup](SETUP.md) · [Optional integrations](docs/integrations.md) ·
-[Development guidance](AGENTS.md) · [Verification](docs/development/verification.md)
+[Development guidance](AGENTS.md) · [PR review](docs/development/review.md) ·
+[Verification](docs/development/verification.md)
 
 ## Contributing
 

@@ -7,6 +7,6 @@ that entry as the PR changes; never add another entry for the same PR.
 
 Keep setup to a short conversation and three portable Markdown docs. Preserve
 existing files and choices; make integrations optional. Keep the development
-workflow and PR review guidance in [AGENTS.md](AGENTS.md), with task-specific checks in
-[verification](docs/development/verification.md). Preserve the README banner,
+workflow in [AGENTS.md](AGENTS.md), with separate [review](docs/development/review.md)
+and [verification](docs/development/verification.md) guides. Preserve the README banner,
 installation video and Homebrew instructions. Keep memory to one entry per PR.
