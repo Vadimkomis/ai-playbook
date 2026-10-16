@@ -4,7 +4,10 @@ All notable changes to this project are documented in this file.
 
 This project follows Semantic Versioning. The structure below is inspired by Keep a Changelog.
 
-## [Unreleased]
+## [1.3.0] - 2026-10-15
+
+- Add project memory to carry useful context between sessions.
+- Simplify setup to a short conversation that creates three Markdown docs.
 
 ## [1.2.0] - 2026-08-17
 
