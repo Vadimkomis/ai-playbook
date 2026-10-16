@@ -11,5 +11,6 @@ workflow in [AGENTS.md](AGENTS.md), with separate [review](docs/development/revi
 and [verification](docs/development/verification.md) guides. Preserve the README banner,
 installation video and Homebrew instructions. Keep reusable guidance in
 `templates/core/`; generate standalone agent instruction files without imports
-between them. Retain a compatibility pointer for existing global Claude links.
+between them. Keep root `AGENTS.md` and `CLAUDE.md` identical and standalone.
+Retain a compatibility pointer for existing global Claude links.
 Keep memory to one entry per PR.
