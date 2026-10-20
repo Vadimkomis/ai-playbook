@@ -32,8 +32,9 @@ Use your own project's purpose, paths, commands and policies when answering.
    | Git policy | `1` — leave changes for review |
    | Other rules | Ask before adding production dependencies. |
 
-   Enter accepts a suggested answer. Setup reads existing guidance and keeps it;
-   questions depend on which documents are missing. Project commands are recorded
+   Enter accepts a suggested answer. Existing projects can keep or review their
+   instructions; review previews policy changes before asking to save. New setup
+   asks for missing documents. Project commands are recorded
    in the guidance and are not executed during installation.
 
 4. Inspect `AGENTS.md`, `ARCHITECTURE.md` and `memory.md` in your project. Setup also

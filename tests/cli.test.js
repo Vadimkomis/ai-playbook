@@ -18,7 +18,7 @@ function capture(overrides = {}) {
   return { output, io: {
     stdout: { write: (value) => { output.stdout += value; } },
     stderr: { write: (value) => { output.stderr += value; } },
-    ask: async (key) => { output.questions.push(key); return answers[key]; }, ...overrides
+    ask: async (key) => { output.questions.push(key); return key === "existingRules" ? "1" : answers[key]; }, ...overrides
   } };
 }
 async function target(t) {
@@ -73,12 +73,14 @@ test("non-JavaScript projects receive no assumed stack", async (t) => {
   assert.doesNotMatch(await read(root, "AGENTS.md"), /React|npm test|Codex|Claude|Python/);
   assert.deepEqual((await manifest(root)).integrations, []);
 });
-test("existing docs and choices are preserved without repeated questions", async (t) => {
+test("existing docs and choices are preserved when review is declined", async (t) => {
   const root = await target(t);
   await init(root);
   await write(root, "AGENTS.md", "# Our rules\nCommit and push automatically after review.\n");
   await write(root, "memory.md", "Remember our custom format.\n");
-  await init(root, [], capture({ ask: async () => assert.fail("Repeated setup question") }).io);
+  await init(root, [], capture({ ask: async (key) => {
+    assert.equal(key, "existingRules"); return "1";
+  } }).io);
   assert.equal(await read(root, "AGENTS.md"), "# Our rules\nCommit and push automatically after review.\n");
   assert.equal(await read(root, "memory.md"), "Remember our custom format.\n");
   assert.equal(await doctor(root), 0);
@@ -88,7 +90,7 @@ test("partial adoption reuses existing rules without a conflicting Git policy", 
   await write(root, "AGENTS.md", "Always commit and push automatically.\n");
   const { io, output } = capture();
   await init(root, [], io);
-  assert.deepEqual(output.questions, ["purpose", "structure"]);
+  assert.deepEqual(output.questions, ["existingRules", "purpose", "structure"]);
   assert.equal(await read(root, "AGENTS.md"), "Always commit and push automatically.\n");
   assert.equal(await doctor(root), 0);
 });
@@ -97,7 +99,7 @@ test("legacy Claude instructions stay authoritative when adding shared docs", as
   await write(root, "CLAUDE.md", "# Existing rules\nCommit automatically. Run make check.\n");
   const { io, output } = capture();
   await init(root, [], io);
-  assert.deepEqual(output.questions, ["purpose", "structure"]);
+  assert.deepEqual(output.questions, ["existingRules", "purpose", "structure"]);
   assert.equal(await read(root, "AGENTS.md"), await read(root, "CLAUDE.md"));
   assert.doesNotMatch(await read(root, "AGENTS.md"), /Leave changes uncommitted/);
 });
@@ -311,7 +313,7 @@ test("Claude instructions are standalone and preserve independent edits on reins
   assert.doesNotMatch(guidance, /AGENTS\.md|CLAUDE\.md/);
   const customized = guidance + "\nClaude-specific rule.\n";
   await write(root, "CLAUDE.md", customized);
-  await init(root, [], capture({ ask: async () => assert.fail("Repeated setup") }).io);
+  await init(root, ["--yes"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
   assert.equal(await read(root, "CLAUDE.md"), customized);
   assert.equal(await read(root, "AGENTS.md"), guidance);
   assert.equal(await doctor(root), 0);
@@ -321,7 +323,7 @@ test("adding Claude reuses existing project guidance without importing it", asyn
   const root = await target(t);
   await init(root);
   await write(root, "AGENTS.md", "# Custom rules\nRun make verify.\n");
-  await init(root, ["--agent", "claude"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
+  await init(root, ["--agent", "claude", "--yes"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
   assert.equal(await read(root, "CLAUDE.md"), "# Custom rules\nRun make verify.\n");
 });
 

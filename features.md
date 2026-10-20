@@ -8,11 +8,18 @@
 - New `AGENTS.md` guidance includes a completion sequence: checks, review and rechecks,
   documentation maintenance, scoped Git delivery and evidence reporting. It uses the
   selected review and Git policies.
-- Existing docs remain authoritative and unchanged. Setup asks for missing documents;
-  users edit established choices directly or explicitly replace files with `--force`.
+- When instructions already exist, interactive setup offers to keep or review them.
+  Review asks about checks, safeguards, review, Git policy and additional rules.
+  Blank answers keep existing policies. Proposed changes to `AGENTS.md` and any
+  standalone `CLAUDE.md` are shown and require confirmation before writing.
+- Confirmed policies explicitly supersede earlier instructions for that choice;
+  other text stays unchanged. Repeat reviews update those policy sections.
+  `--yes` preserves existing guidance without reviewing; `--force` replaces files.
 - Setup makes evidence-based command suggestions without running project commands.
 - Unknown facts stay open. Noninteractive runs require `--yes` and mark unfinished docs.
 - Cancellation before writing and dry runs leave project files unchanged.
+- Declining a proposed review leaves all files and installation metadata unchanged.
+  Concurrent edits detected before writing abort the review instead of overwriting them.
 
 ## Portability and customization
 

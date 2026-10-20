@@ -18,44 +18,32 @@ between them. Keep root `AGENTS.md` and `CLAUDE.md` identical and standalone.
 Retain a compatibility pointer for existing global Claude links.
 Keep memory to one entry per PR.
 
-## [PR #14](https://github.com/Vadimkomis/ai-playbook/pull/14) — Homebrew verification and memory capture
+## [PR #14](https://github.com/Vadimkomis/ai-playbook/pull/14) — Installation verification and guided policy review
 
-The reported failure occurred while Homebrew downloaded its package metadata,
-before ai-playbook setup. A later full download succeeded; the original cause
-and an infinite retry loop remain unconfirmed. CI had disabled auto-update,
-leaving that path untested. Homebrew can continue installing after an auto-update
-failure; check an explicit `brew update` exit before install. Exercise updates
-with a fresh download cache, bound each verification phase to ten minutes,
-and retain logs on failure. Controlled
-process tests cover download failure and stalled descendants; they do not prove
-Homebrew networking or the public tap works. The formula still tests its pinned
-archive, not current branch code. Verify the public tap before declaring delivery
-healthy; the shorter `brew install ai-playbook` requires homebrew-core acceptance.
-Save findings before a PR exists using a branch entry, then rename that entry.
-Existing project instructions remain preserved on reinstall; template changes
-apply to newly generated guidance.
+The original failure was a Homebrew metadata download; its cause and an infinite
+loop remain unconfirmed. CI now checks an explicit `brew update` before install,
+uses a fresh cache, bounds each phase to ten minutes and retains logs. Homebrew
+can continue installing after an auto-update failure, so install exit alone is
+insufficient. Controlled process tests do not prove Homebrew networking works.
 
-Release 1.3.1 includes the updated memory templates. Keep the package and Homebrew
-formula versions aligned and pin the verified source archive by revision and
-checksum. Existing project docs remain preserved on upgrade; new templates are
-used for new guidance. GitHub, Homebrew and npm publication are separate actions.
+Release 1.3.1 was published to GitHub, Homebrew (tap `2b75a23`) and npm after
+[candidate CI](https://github.com/Vadimkomis/ai-playbook/actions/runs/39494112799)
+passed seven jobs. Match package/formula versions and pin verified archives.
+Verify npm latest, checksum and a registry install outside this repository:
+`npm exec` here can resolve an older global binary. npm upload acceptance (202)
+can precede availability while scanning completes. Local Homebrew also had an
+unrelated stale notifyme tap; do not confuse host state with clean-runner evidence.
 
-Release verification: [candidate CI](https://github.com/Vadimkomis/ai-playbook/actions/runs/39494112799)
-passed all seven jobs. GitHub release `1.3.1` and public tap commit `2b75a23`
-were published; the public formula matches the verified candidate. npm `1.3.1`
-was published after login and browser 2FA approval; `latest` and artifact integrity
-were verified. A registry install outside this repository generated the correct
-version and memory policy. Run npm smoke tests outside the package repository:
-`npm exec` can otherwise resolve an older global executable without downloading
-the requested package. npm can accept an upload with HTTP 202 before scanning
-completes; verify public availability rather than only the publish exit code.
-Local `brew update` also exposed an unrelated stale `homebrew-notifyme-local`
-tap pointing to a missing temporary repository. The local upgrade dry run found
-1.3.1 but would change 13 dependencies, so full local upgrade was not performed.
-Do not confuse the successful clean-runner install with this host's state.
+Strength AI Backend upgrade preserved 83 files; doctor and repeat installation
+passed. Its manifest-only commit `c10fd70` remains local. Preserve existing project
+content, but offer interactive users a keep-or-review choice rather than silently
+skipping policy questions. Blank review answers retain policies; preview and
+confirmation precede writes. Confirmed Markdown sections supersede earlier policy
+choices while unrelated text remains. Repeat reviews update those sections;
+concurrent edits and malformed markers abort. Standalone Claude guidance receives
+the same confirmed choices while preserving its independent text. `--yes` keeps
+existing guidance; headless review requires a terminal or explicit `--yes`.
 
-Strength AI Backend upgrade verification: published npm 1.3.1 upgraded its manifest
-from 1.3.0; doctor passed, reinstall was idempotent, and hashes confirmed 83 other
-files unchanged. Existing guidance (including the older memory rules) remains
-preserved; adopting new rules in an established repo requires a targeted edit.
-The backend manifest upgrade was committed locally as `c10fd70`, without pushing.
+Guided review is implemented but not yet published. Verification: 84 local tests,
+including 15 review cases, independent review, and real-terminal preview/save on
+a temporary copy of the backend guidance. The actual backend was not rewritten.

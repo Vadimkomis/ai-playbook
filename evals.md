@@ -21,6 +21,11 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Notes: Reinstallation preserves existing docs and policies. Unknown noninteractive answers remain unfinished.
   Review generated workflow guidance separately; installer tests do not prove agent compliance.
 
+- Name: Review existing project policies
+- Description: Existing projects can keep rules or answer policy questions, preview edits and confirm saving without replacing unrelated instructions. Cancellation leaves files unchanged; concurrent edits abort safely.
+- Test mapping: `tests/review-setup.test.js`; `tests/cli.test.js`
+- Notes: `--yes` skips review. Headless runs require `--yes`; script-driven agents must arrange an interactive terminal for the conversation. Tests do not establish agent compliance with the resulting policies.
+
 - Name: Native skill and agent installation
 - Description: Only explicitly selected workflows and native integrations are installed; the portable core remains available with no selected platform.
 - Test mapping: `tests/cli.test.js`; `tests/capabilities.test.js`
@@ -29,7 +34,7 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Name: Compatibility-safe legacy migration
 - Description: Version-2 selections survive migration; missing shared docs and selected native files are added without deleting legacy or user-owned files.
 - Test mapping: `tests/cli.test.js`
-- Notes: `--force` remains the only opt-in overwrite mechanism.
+- Notes: `--force` opts into whole-file replacement; confirmed interactive reviews update only their policy sections.
 
 - Name: Skill activation metadata
 - Description: Every canonical skill has unique valid metadata and representative direct, indirect, incomplete, and negative activation prompts.
