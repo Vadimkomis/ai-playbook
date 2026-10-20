@@ -53,3 +53,9 @@ Local `brew update` also exposed an unrelated stale `homebrew-notifyme-local`
 tap pointing to a missing temporary repository. The local upgrade dry run found
 1.3.1 but would change 13 dependencies, so full local upgrade was not performed.
 Do not confuse the successful clean-runner install with this host's state.
+
+Strength AI Backend upgrade verification: published npm 1.3.1 upgraded its manifest
+from 1.3.0; doctor passed, reinstall was idempotent, and hashes confirmed 83 other
+files unchanged. Existing guidance (including the older memory rules) remains
+preserved; adopting new rules in an established repo requires a targeted edit.
+The backend manifest upgrade was committed locally as `c10fd70`, without pushing.
