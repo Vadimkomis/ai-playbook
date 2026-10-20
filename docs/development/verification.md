@@ -43,3 +43,8 @@ pending, skipped or infrastructure-blocked checks separately.
 
 A separate macOS job installs and tests the Homebrew formula. It verifies the
 formula's pinned source archive, not unpinned CLI changes in the current branch.
+It uses a fresh download cache, enables metadata updates, limits each phase to
+ten minutes and uploads the installation log even after failure. Controlled
+process tests in `tests/homebrew-install.test.js` verify failure handling and
+timeout cleanup locally; they do not replace the real Homebrew job or the
+public-tap release check in [Homebrew delivery](homebrew.md).

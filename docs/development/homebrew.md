@@ -21,6 +21,13 @@ new source releases do not update the tap automatically.
    unfinished setup, preservation and both optional native layouts.
    Homebrew may upgrade installed dependencies; use a disposable runner when
    testing a fresh dependency installation.
+   CI runs `node scripts/verify-homebrew.js` with a fresh download cache and
+   metadata updates enabled. An explicit `brew update` must succeed before install:
+   Homebrew can otherwise continue installing after an auto-update failure.
+   Each phase has a ten-minute deadline; failure stops
+   subsequent phases without an outer retry. Logs are retained as an artifact,
+   including on failure. This does not guarantee dependencies are absent from
+   the runner or exercise the public tap; verify both separately when releasing.
 3. Obtain independent review, commit and push the source change, then copy the
    formula unchanged into `Vadimkomis/homebrew-tap/Formula/ai-playbook.rb`.
    Commit and push the tap; verify both copies match.
@@ -30,3 +37,16 @@ new source releases do not update the tap automatically.
 For a broken update, publish the previous known-good URL and checksum with a
 newer formula version/revision so existing users can upgrade to the correction.
 Tool upgrades do not rewrite project guidance; users rerun setup explicitly.
+
+## Download failures
+
+A failure downloading `formulae.brew.sh` metadata occurs in Homebrew before
+ai-playbook setup. Capture the command, Homebrew version, final error and exit
+status. Repeated progress output alone does not establish an infinite loop.
+Do not treat disabling auto-update or sudo as a download fix. Investigate the
+failed endpoint and reproduce the public installation before claiming resolution.
+
+`tests/homebrew-install.test.js` runs the verification script against controlled
+processes to check successful sequencing, inherited update overrides, failed
+downloads, missing executables and termination of stalled process groups.
+These tests validate our supervisor, not Homebrew's internal retry behavior.

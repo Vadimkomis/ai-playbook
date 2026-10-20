@@ -27,14 +27,20 @@ jobs:
 
   homebrew:
     runs-on: macos-latest
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
-      - name: Install from the candidate formula
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install and verify the candidate with Homebrew updates enabled
         env:
-          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_CACHE: ${{ runner.temp }}/homebrew-cache
           HOMEBREW_NO_INSTALL_CLEANUP: 1
-        run: |
-          brew tap ai-playbook-test/tap "$GITHUB_WORKSPACE"
-          brew install --build-from-source ai-playbook-test/tap/ai-playbook
-      - run: brew test ai-playbook-test/tap/ai-playbook
-      - run: brew style ai-playbook-test/tap/ai-playbook
+        run: node scripts/verify-homebrew.js
+      - name: Retain Homebrew installation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homebrew-install-log
+          path: .tmp/homebrew-install.log

@@ -9,8 +9,11 @@ behavior through [features.md](features.md); verification contracts live in
 - Run applicable checks from [verification](docs/development/verification.md).
 - Follow the [PR review guide](docs/development/review.md). Get independent review
   for substantial or risky changes; resolve findings and rerun affected checks.
-- Update affected docs and the PR’s single entry in [memory.md](memory.md).
-  Never create multiple memory entries for the same PR.
+- Update affected docs. Save lasting decisions, verified findings and unresolved
+  pitfalls in [memory.md](memory.md) before ending a task, including blocked work.
+  Update one entry per PR; before a PR exists, name the entry for the branch
+  and rename it when the PR opens.
+  Keep confirmed facts separate from hypotheses; never create duplicate entries.
 - Inspect the diff, run `git diff --check`, and stage only task-scoped changes.
 - After checks and required review pass, commit and push the current branch unless
   asked otherwise. Verify the remote and upstream; never force-push.

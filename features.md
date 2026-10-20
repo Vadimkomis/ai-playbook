@@ -27,6 +27,8 @@
   instructions as `AGENTS.md`. Existing files retain their independent edits.
 - Specs, native agents and independent-validation contracts are optional.
 - Existing integrations, extras and legacy files survive reinstallation and layout migration.
+- New memory guidance saves lasting findings before a task ends, including blocked
+  work. Before a PR exists, use one branch entry and rename it when the PR opens.
 
 ## Verification
 

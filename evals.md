@@ -10,6 +10,11 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Test mapping: `Formula/ai-playbook.rb` (`brew test`); see [Homebrew delivery](docs/development/homebrew.md).
 - Notes: The archive is pinned by Git revision and SHA-256. Homebrew tests are separate from the Node test matrix.
 
+- Name: Bounded Homebrew verification
+- Description: Candidate verification enables metadata updates, stops on failure, kills stalled process groups and retains diagnostic output.
+- Test mapping: `tests/homebrew-install.test.js`; `.github/workflows/test.yml`
+- Notes: Controlled processes test the supervisor, not Homebrew's network behavior. The macOS job uses a fresh download cache; the public tap requires a separate release check.
+
 - Name: Portable guided setup
 - Description: The default installation asks for missing project information and writes three editable Markdown docs without selecting an agent or stack. Cancellation, dry runs and incomplete answers are reported honestly.
 - Test mapping: `tests/cli.test.js`
