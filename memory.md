@@ -42,8 +42,13 @@ used for new guidance. GitHub, Homebrew and npm publication are separate actions
 
 Release verification: [candidate CI](https://github.com/Vadimkomis/ai-playbook/actions/runs/39494112799)
 passed all seven jobs. GitHub release `1.3.1` and public tap commit `2b75a23`
-were published; the public formula matches the verified candidate. npm publication
-was blocked by `npm whoami` returning 401; the registry still reported `1.2.0`.
+were published; the public formula matches the verified candidate. npm `1.3.1`
+was published after login and browser 2FA approval; `latest` and artifact integrity
+were verified. A registry install outside this repository generated the correct
+version and memory policy. Run npm smoke tests outside the package repository:
+`npm exec` can otherwise resolve an older global executable without downloading
+the requested package. npm can accept an upload with HTTP 202 before scanning
+completes; verify public availability rather than only the publish exit code.
 Local `brew update` also exposed an unrelated stale `homebrew-notifyme-local`
 tap pointing to a missing temporary repository. The local upgrade dry run found
 1.3.1 but would change 13 dependencies, so full local upgrade was not performed.
