@@ -6,15 +6,14 @@ an identical copy so users can run `brew install vadimkomis/tap/ai-playbook`.
 Node is the CLI's existing runtime dependency; installation runs no npm scripts
 and needs no npm development dependencies.
 
-The initial `1.3.0-preview.1` formula packages guided setup from revision
-`4dcc356527041786505afd265a122ea295dd497d`. That preview still contains package version `1.2.0`;
-new source releases do not update the tap automatically.
+The formula pins a source revision and its SHA-256. Keep its version aligned with
+`package.json`; new source releases do not update the tap automatically.
 
 ## Updating the package
 
 1. Select a reviewed, tested and pushed source revision. Update the formula URL,
    version and SHA-256 of its downloaded archive. Never point at a moving branch.
-   Use a newer preview version until guided setup has a stable release.
+   Bump `package.json` before pinning the source so the installed version matches.
 2. Install from a temporary local tap containing the candidate formula. Run
    `brew test <test-tap>/ai-playbook` and `brew style <test-tap>/ai-playbook`,
    plus `npm test` in this repository. The formula test covers paths with spaces,

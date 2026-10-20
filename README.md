@@ -37,8 +37,7 @@ brew install vadimkomis/tap/ai-playbook
 ai-playbook --target "/path/to/your-project"
 ```
 
-Homebrew manages Node.js for you. The first Homebrew package is a preview of the
-guided setup shown here. Answer the questions, then check your installation:
+Homebrew manages Node.js for you. Answer the questions, then check your installation:
 
 ```sh
 ai-playbook doctor --target "/path/to/your-project"

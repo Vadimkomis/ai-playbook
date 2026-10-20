@@ -18,7 +18,7 @@ between them. Keep root `AGENTS.md` and `CLAUDE.md` identical and standalone.
 Retain a compatibility pointer for existing global Claude links.
 Keep memory to one entry per PR.
 
-## Branch `fix-bugs` — Homebrew verification and memory capture
+## [PR #14](https://github.com/Vadimkomis/ai-playbook/pull/14) — Homebrew verification and memory capture
 
 The reported failure occurred while Homebrew downloaded its package metadata,
 before ai-playbook setup. A later full download succeeded; the original cause
@@ -34,3 +34,8 @@ healthy; the shorter `brew install ai-playbook` requires homebrew-core acceptanc
 Save findings before a PR exists using a branch entry, then rename that entry.
 Existing project instructions remain preserved on reinstall; template changes
 apply to newly generated guidance.
+
+Release 1.3.1 includes the updated memory templates. Keep the package and Homebrew
+formula versions aligned and pin the verified source archive by revision and
+checksum. Existing project docs remain preserved on upgrade; new templates are
+used for new guidance. GitHub, Homebrew and npm publication are separate actions.
