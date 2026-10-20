@@ -39,3 +39,12 @@ Release 1.3.1 includes the updated memory templates. Keep the package and Homebr
 formula versions aligned and pin the verified source archive by revision and
 checksum. Existing project docs remain preserved on upgrade; new templates are
 used for new guidance. GitHub, Homebrew and npm publication are separate actions.
+
+Release verification: [candidate CI](https://github.com/Vadimkomis/ai-playbook/actions/runs/39494112799)
+passed all seven jobs. GitHub release `1.3.1` and public tap commit `2b75a23`
+were published; the public formula matches the verified candidate. npm publication
+was blocked by `npm whoami` returning 401; the registry still reported `1.2.0`.
+Local `brew update` also exposed an unrelated stale `homebrew-notifyme-local`
+tap pointing to a missing temporary repository. The local upgrade dry run found
+1.3.1 but would change 13 dependencies, so full local upgrade was not performed.
+Do not confuse the successful clean-runner install with this host's state.
