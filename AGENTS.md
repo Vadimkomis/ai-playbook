@@ -11,8 +11,8 @@ behavior through [features.md](features.md); verification contracts live in
   for substantial or risky changes; resolve findings and rerun affected checks.
 - Update affected docs. Save lasting decisions, verified findings and unresolved
   pitfalls in [memory.md](memory.md) before ending a task, including blocked work.
-  Update one entry per PR; before a PR exists, name the entry for the branch
-  and rename it when the PR opens.
+  Keep one entry per PR. Save notes under the branch name until a PR exists.
+  Then change the heading to the PR number.
   Keep confirmed facts separate from hypotheses; never create duplicate entries.
 - Inspect the diff, run `git diff --check`, and stage only task-scoped changes.
 - After checks and required review pass, commit and push the current branch unless

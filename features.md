@@ -19,7 +19,7 @@
 - Unknown facts stay open. Noninteractive runs require `--yes` and mark unfinished docs.
 - Cancellation before writing and dry runs leave project files unchanged.
 - Declining a proposed review leaves all files and installation metadata unchanged.
-  Concurrent edits detected before writing abort the review instead of overwriting them.
+  If a file changes during setup, setup stops to avoid losing those changes.
 
 ## Portability and customization
 
@@ -35,7 +35,8 @@
 - Specs, native agents and independent-validation contracts are optional.
 - Existing integrations, extras and legacy files survive reinstallation and layout migration.
 - New memory guidance saves lasting findings before a task ends, including blocked
-  work. Before a PR exists, use one branch entry and rename it when the PR opens.
+  work. Save notes under the branch name until a PR exists. Then change the heading
+  to the PR number.
 
 ## Verification
 

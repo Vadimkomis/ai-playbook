@@ -17,8 +17,8 @@ Reuse recorded decisions and follow links to detailed docs when relevant.
    affected checks.
 3. Update affected docs. Before ending a task, including blocked work, save lasting
    decisions, verified findings and unresolved pitfalls in [memory.md](memory.md).
-   Keep one entry per PR; before a PR exists, name the entry for the branch and
-   rename it when the PR opens. Separate confirmed facts from hypotheses.
+   Keep one entry per PR. Save notes under the branch name until a PR exists.
+   Then change the heading to the PR number. Separate confirmed facts from hypotheses.
    Never create duplicate entries; keep temporary task progress elsewhere.
 4. Before committing, run `git diff --check` and stage only task changes.
 5. {{git}}

@@ -1,9 +1,10 @@
 # Project memory
 
-Keep one concise entry per PR, identified by its number or link. Before a PR
-exists, name the entry for the branch; rename it when the PR opens. Update the
-same entry throughout the work. Save lasting decisions, verified findings and
-unresolved pitfalls before ending a task, including blocked work. Distinguish
+Keep one concise entry per PR, identified by its number or link. Save notes under
+the branch name until a PR exists. Then change the heading to the PR number.
+Update the same entry throughout the work. Save lasting decisions, verified
+findings and unresolved pitfalls before ending a task, including blocked work.
+Distinguish
 confirmed facts from hypotheses; keep temporary task progress elsewhere.
 
 ## [PR #13](https://github.com/Vadimkomis/ai-playbook/pull/13) — Memory and simpler setup
@@ -47,3 +48,4 @@ existing guidance; headless review requires a terminal or explicit `--yes`.
 Guided review is implemented but not yet published. Verification: 84 local tests,
 including 15 review cases, independent review, and real-terminal preview/save on
 a temporary copy of the backend guidance. The actual backend was not rewritten.
+Use plain wording for setup safeguards and memory headings.
