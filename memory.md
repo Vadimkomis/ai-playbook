@@ -49,3 +49,12 @@ Guided review is implemented but not yet published. Verification: 84 local tests
 including 15 review cases, independent review, and real-terminal preview/save on
 a temporary copy of the backend guidance. The actual backend was not rewritten.
 Use plain wording for setup safeguards and memory headings.
+
+CI runs on PR updates and `main` pushes without duplicate feature-branch push
+runs, and cancels superseded runs. A whitespace/routing job selects from the
+whole change range: human docs/images use one job; code, executable guidance and
+unknown paths retain six platform jobs. Formula, workflow, verification scripts
+and related tests also select Homebrew. Manual runs or absent or zero baselines run all
+checks. Real-Git fixtures cover mixed PRs, renames and whitespace failures.
+Local verification: 107 tests passed, actionlint passed and independent review
+found no remaining issues; remote execution remains to be checked.

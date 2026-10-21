@@ -5,6 +5,11 @@ Test runners and CI are the authoritative source for pass/fail results.
 
 ## Capability distribution
 
+- Name: CI check selection
+- Description: Human documentation avoids the platform matrix; executable guidance and unknown paths retain it. Selection checks the complete change range, treats renames as deletion plus addition, fails whitespace errors and runs all checks for manual requests or absent or zero baselines.
+- Test mapping: `tests/ci-changes.test.js`; `.github/workflows/test.yml`
+- Notes: Local Git fixtures verify selection; remote run inspection verifies GitHub triggers and job execution.
+
 - Name: Homebrew installation
 - Description: The installed command creates the portable core, reports unfinished setup, preserves customized docs and installs all optional assets from the packaged source.
 - Test mapping: `Formula/ai-playbook.rb` (`brew test`); see [Homebrew delivery](docs/development/homebrew.md).

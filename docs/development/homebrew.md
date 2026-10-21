@@ -20,7 +20,9 @@ The formula pins a source revision and its SHA-256. Keep its version aligned wit
    unfinished setup, preservation and both optional native layouts.
    Homebrew may upgrade installed dependencies; use a disposable runner when
    testing a fresh dependency installation.
-   CI runs `node scripts/verify-homebrew.js` with a fresh download cache and
+   CI selects Homebrew for formula, workflow, verification-script and related
+   test changes; **Run workflow** requests it manually. See [CI evidence](verification.md#ci-evidence).
+   It runs `node scripts/verify-homebrew.js` with a fresh download cache and
    metadata updates enabled. An explicit `brew update` must succeed before install:
    Homebrew can otherwise continue installing after an auto-update failure.
    Each phase has a ten-minute deadline; failure stops
