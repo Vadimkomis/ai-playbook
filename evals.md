@@ -5,16 +5,36 @@ Test runners and CI are the authoritative source for pass/fail results.
 
 ## Capability distribution
 
+- Name: Autonomous task guidance
+- Description: Both generated agent formats include the complete autonomy rule in interactive, starter and replacement installations.
+- Test mapping: `tests/cli.test.js`; `tests/fixtures/autonomous-guidance.md`
+- Notes: Generation checks verify distributed instructions, not actual agent compliance; existing custom guidance is preserved on ordinary reinstall.
+
+- Name: CI check selection
+- Description: Human documentation avoids the platform matrix; executable guidance and unknown paths retain it. Selection checks the complete change range, treats renames as deletion plus addition, fails whitespace errors and runs all checks for manual requests or absent or zero baselines.
+- Test mapping: `tests/ci-changes.test.js`; `.github/workflows/test.yml`
+- Notes: Local Git fixtures verify selection; remote run inspection verifies GitHub triggers and job execution.
+
 - Name: Homebrew installation
 - Description: The installed command creates the portable core, reports unfinished setup, preserves customized docs and installs all optional assets from the packaged source.
 - Test mapping: `Formula/ai-playbook.rb` (`brew test`); see [Homebrew delivery](docs/development/homebrew.md).
 - Notes: The archive is pinned by Git revision and SHA-256. Homebrew tests are separate from the Node test matrix.
 
+- Name: Bounded Homebrew verification
+- Description: Candidate verification enables metadata updates, stops on failure, kills stalled process groups and retains diagnostic output.
+- Test mapping: `tests/homebrew-install.test.js`; `.github/workflows/test.yml`
+- Notes: Controlled processes test the supervisor, not Homebrew's network behavior. The macOS job uses a fresh download cache; the public tap requires a separate release check.
+
 - Name: Portable guided setup
 - Description: The default installation asks for missing project information and writes three editable Markdown docs without selecting an agent or stack. Cancellation, dry runs and incomplete answers are reported honestly.
 - Test mapping: `tests/cli.test.js`
-- Notes: Reinstallation preserves existing docs and policies. Unknown noninteractive answers remain unfinished.
+- Notes: Generated instructions require one sentence per PR in memory and default to commit-and-push after checks and review; explicit Git choices and existing docs remain authoritative. Unknown noninteractive answers remain unfinished.
   Review generated workflow guidance separately; installer tests do not prove agent compliance.
+
+- Name: Review existing project policies
+- Description: Existing projects can keep rules or answer policy questions, preview edits and confirm saving without replacing unrelated instructions. Cancellation leaves files unchanged; concurrent edits abort safely.
+- Test mapping: `tests/review-setup.test.js`; `tests/cli.test.js`
+- Notes: `--yes` skips review. Headless runs require `--yes`; script-driven agents must arrange an interactive terminal for the conversation. Tests do not establish agent compliance with the resulting policies.
 
 - Name: Native skill and agent installation
 - Description: Only explicitly selected workflows and native integrations are installed; the portable core remains available with no selected platform.
@@ -24,7 +44,7 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Name: Compatibility-safe legacy migration
 - Description: Version-2 selections survive migration; missing shared docs and selected native files are added without deleting legacy or user-owned files.
 - Test mapping: `tests/cli.test.js`
-- Notes: `--force` remains the only opt-in overwrite mechanism.
+- Notes: `--force` opts into whole-file replacement; confirmed interactive reviews update only their policy sections.
 
 - Name: Skill activation metadata
 - Description: Every canonical skill has unique valid metadata and representative direct, indirect, incomplete, and negative activation prompts.

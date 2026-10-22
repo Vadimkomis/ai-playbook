@@ -1,12 +1,42 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      tests: ${{ steps.select.outputs.tests }}
+      homebrew: ${{ steps.select.outputs.homebrew }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check whitespace and select required jobs
+        id: select
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/ci-changes.js
+
   test:
+    needs: changes
+    if: needs.changes.outputs.tests == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -26,15 +56,23 @@ jobs:
       - run: npm test
 
   homebrew:
+    needs: changes
+    if: needs.changes.outputs.homebrew == 'true'
     runs-on: macos-latest
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
-      - name: Install from the candidate formula
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install and verify the candidate with Homebrew updates enabled
         env:
-          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_CACHE: ${{ runner.temp }}/homebrew-cache
           HOMEBREW_NO_INSTALL_CLEANUP: 1
-        run: |
-          brew tap ai-playbook-test/tap "$GITHUB_WORKSPACE"
-          brew install --build-from-source ai-playbook-test/tap/ai-playbook
-      - run: brew test ai-playbook-test/tap/ai-playbook
-      - run: brew style ai-playbook-test/tap/ai-playbook
+        run: node scripts/verify-homebrew.js
+      - name: Retain Homebrew installation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homebrew-install-log
+          path: .tmp/homebrew-install.log

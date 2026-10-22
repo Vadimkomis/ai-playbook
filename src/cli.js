@@ -19,7 +19,7 @@ Options:
   --target <path>    Project folder (default: current directory)
   --agent <name>     Optional integration: codex | claude | both
   --with <extra>     Add a workflow, specs, or all (repeatable)
-  --yes             Create starter docs without questions; unknown facts stay open
+  --yes             Keep existing guidance; create starter docs without questions
   --dry-run         Show proposed files without asking or writing
   --force           Replace selected files, including customized docs
   -h, --help        Show help
@@ -80,6 +80,7 @@ async function install(args, io) {
   if (!entries) return 1;
   for (const asset of assets) {
     if (asset.fromCore) {
+      if (entries.some((entry) => entry.to === asset.to)) continue;
       entries.push({ to: asset.to, content: entries.find((entry) => entry.to === asset.fromCore).content });
       continue;
     }

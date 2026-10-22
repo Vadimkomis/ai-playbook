@@ -1,7 +1,9 @@
 # Project memory
 
-Keep exactly one concise entry per PR, identified by its number or link. Update
-that entry as the PR changes; never add another entry for the same PR.
+Keep one sentence per PR summarizing what changed, identified by its number or
+link. Use the branch name until a PR exists, then rename the heading. Update the
+same entry throughout the work; keep implementation details and test results in
+the PR description and relevant documentation.
 
 ## [PR #13](https://github.com/Vadimkomis/ai-playbook/pull/13) — Memory and simpler setup
 
@@ -14,3 +16,7 @@ installation video and Homebrew instructions. Keep reusable guidance in
 between them. Keep root `AGENTS.md` and `CLAUDE.md` identical and standalone.
 Retain a compatibility pointer for existing global Claude links.
 Keep memory to one entry per PR.
+
+## [PR #14](https://github.com/Vadimkomis/ai-playbook/pull/14) — Installation verification and guided policy review
+
+Improved Homebrew checks, added guided policy review, reduced unnecessary CI runs, and added concise PR memory and autonomous task completion through commit and push.

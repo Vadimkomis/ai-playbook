@@ -8,6 +8,7 @@ The optional Node.js CLI asks setup questions and installs them. The docs need n
 | `bin/ai-playbook.js` | Executable entry point and error reporting |
 | `src/cli.js` | Arguments, commands and installation orchestration |
 | `src/setup.js` | Questions, evidence-based suggestions and doc rendering |
+| `src/prompts.js`, `src/review-setup.js` | Shared questions and confirmed policy updates for existing instructions |
 | `src/files.js` | Safe destinations, preservation and manifest migration |
 | `src/catalog.js` | Optional workflows and native integration file mappings |
 | `src/doctor.js` | Checks for installed files, metadata, permissions and contracts |
@@ -16,6 +17,7 @@ The optional Node.js CLI asks setup questions and installs them. The docs need n
 | `.agents/skills/`, `Codex/agents/`, `Claude/` | Optional workflows and native adapters |
 | `contracts/`, `src/independent-validator-contracts.js` | Independent validation contracts |
 | `tests/` | Installer, packaging, capability and contract checks |
+| `scripts/ci-changes.js` | Changed-file selection and whitespace verification for CI |
 | `Formula/ai-playbook.rb` | Homebrew package and installed-command smoke tests |
 
 Setup collects answers before writing. Existing docs remain authoritative; missing

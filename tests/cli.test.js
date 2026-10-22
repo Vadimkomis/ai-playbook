@@ -18,7 +18,7 @@ function capture(overrides = {}) {
   return { output, io: {
     stdout: { write: (value) => { output.stdout += value; } },
     stderr: { write: (value) => { output.stderr += value; } },
-    ask: async (key) => { output.questions.push(key); return answers[key]; }, ...overrides
+    ask: async (key) => { output.questions.push(key); return key === "existingRules" ? "1" : answers[key]; }, ...overrides
   } };
 }
 async function target(t) {
@@ -31,6 +31,34 @@ const write = (root, name, value) => fs.writeFile(path.join(root, name), value);
 const manifest = async (root) => JSON.parse(await read(root, ".ai-playbook-manifest.json"));
 const init = (root, flags = [], io = capture().io) => run(["init", "--target", root, ...flags], io);
 const doctor = (root, io = capture().io) => run(["doctor", "--target", root], io);
+
+test("this repository's installed agent guides match and retain the autonomy rule", async () => {
+  const root = path.resolve(__dirname, "..");
+  const agents = await read(root, "AGENTS.md");
+  assert.equal(await read(root, "CLAUDE.md"), agents);
+  const rule = (await read(root, "tests/fixtures/autonomous-guidance.md")).trim();
+  assert.ok(agents.includes(rule));
+  assert.equal(agents.split("## Complete tasks autonomously").length - 1, 1);
+  assert.match(agents, /one sentence per PR/);
+});
+
+for (const flags of [[], ["--yes"], ["--force"]]) {
+  test(`both generated agent formats retain the complete autonomy rule (${flags.join(" ") || "interactive"})`, async (t) => {
+    const root = await target(t);
+    if (flags.includes("--force")) {
+      await write(root, "AGENTS.md", "# Old guidance\n");
+      await write(root, "CLAUDE.md", "# Old Claude guidance\n");
+    }
+    const { io } = capture({ ask: async (key) => key === "git" ? "3" : answers[key] });
+    assert.equal(await init(root, [...flags, "--agent", "claude"], io), 0);
+    const rule = (await fs.readFile(path.join(__dirname, "fixtures/autonomous-guidance.md"), "utf8")).trim();
+    for (const name of ["AGENTS.md", "CLAUDE.md"]) {
+      const guidance = await read(root, name);
+      assert.ok(guidance.includes(rule), `${name} must include the complete requested rule`);
+      assert.equal(guidance.split("## Complete tasks autonomously").length - 1, 1);
+    }
+  });
+}
 
 test("no arguments start setup without selecting an agent or a stack", () => {
   const parsed = parseArgs([]);
@@ -73,12 +101,14 @@ test("non-JavaScript projects receive no assumed stack", async (t) => {
   assert.doesNotMatch(await read(root, "AGENTS.md"), /React|npm test|Codex|Claude|Python/);
   assert.deepEqual((await manifest(root)).integrations, []);
 });
-test("existing docs and choices are preserved without repeated questions", async (t) => {
+test("existing docs and choices are preserved when review is declined", async (t) => {
   const root = await target(t);
   await init(root);
   await write(root, "AGENTS.md", "# Our rules\nCommit and push automatically after review.\n");
   await write(root, "memory.md", "Remember our custom format.\n");
-  await init(root, [], capture({ ask: async () => assert.fail("Repeated setup question") }).io);
+  await init(root, [], capture({ ask: async (key) => {
+    assert.equal(key, "existingRules"); return "1";
+  } }).io);
   assert.equal(await read(root, "AGENTS.md"), "# Our rules\nCommit and push automatically after review.\n");
   assert.equal(await read(root, "memory.md"), "Remember our custom format.\n");
   assert.equal(await doctor(root), 0);
@@ -88,7 +118,7 @@ test("partial adoption reuses existing rules without a conflicting Git policy", 
   await write(root, "AGENTS.md", "Always commit and push automatically.\n");
   const { io, output } = capture();
   await init(root, [], io);
-  assert.deepEqual(output.questions, ["purpose", "structure"]);
+  assert.deepEqual(output.questions, ["existingRules", "purpose", "structure"]);
   assert.equal(await read(root, "AGENTS.md"), "Always commit and push automatically.\n");
   assert.equal(await doctor(root), 0);
 });
@@ -97,7 +127,7 @@ test("legacy Claude instructions stay authoritative when adding shared docs", as
   await write(root, "CLAUDE.md", "# Existing rules\nCommit automatically. Run make check.\n");
   const { io, output } = capture();
   await init(root, [], io);
-  assert.deepEqual(output.questions, ["purpose", "structure"]);
+  assert.deepEqual(output.questions, ["existingRules", "purpose", "structure"]);
   assert.equal(await read(root, "AGENTS.md"), await read(root, "CLAUDE.md"));
   assert.doesNotMatch(await read(root, "AGENTS.md"), /Leave changes uncommitted/);
 });
@@ -130,8 +160,36 @@ test("blank required answers are unfinished rather than fabricated", async (t) =
   await init(root, [], io);
   assert.match(output.stdout, /unfinished|complete setup/i);
   assert.equal(await doctor(root), 1);
-  assert.match(await read(root, "AGENTS.md"), /Leave changes uncommitted/);
+  assert.match(await read(root, "AGENTS.md"), /Commit scoped changes and push the current branch automatically/);
 });
+
+for (const flags of [[], ["--yes"]]) {
+  test(`new project defaults to commit and push with concise standalone guidance (${flags.join(" ") || "interactive"})`, async (t) => {
+    const root = await target(t);
+    const { io } = capture({ ask: async (key) => key === "git" ? "" : answers[key] });
+    assert.equal(await init(root, [...flags, "--agent", "claude"], io), 0);
+    const agents = await read(root, "AGENTS.md");
+    assert.equal(await read(root, "CLAUDE.md"), agents);
+    assert.match(agents, /Commit scoped changes and push the current branch automatically/);
+    assert.match(agents, /unless the user asks otherwise/);
+    assert.equal((agents.match(/never force-push/gi) || []).length, 1);
+    assert.equal((agents.match(/Verify the remote and upstream/g) || []).length, 1);
+    assert.equal((agents.match(/Confirm any push succeeded/g) || []).length, 1);
+    assert.match(agents, /one sentence per PR/);
+    assert.doesNotMatch(agents, /save lasting|verified findings|unresolved pitfalls/);
+    assert.match(await read(root, "memory.md"), /one sentence per PR/);
+  });
+}
+
+for (const [choice, policy] of [["1", /Leave changes uncommitted/], ["2", /Push only when requested/],
+  ["3", /push the current branch automatically/]]) {
+  test(`explicit Git policy ${choice} appears in both instruction files`, async (t) => {
+    const root = await target(t);
+    const { io } = capture({ ask: async (key) => key === "git" ? choice : answers[key] });
+    assert.equal(await init(root, ["--agent", "claude"], io), 0);
+    for (const name of ["AGENTS.md", "CLAUDE.md"]) assert.match(await read(root, name), policy);
+  });
+}
 test("command suggestions use existing scripts without executing them", async (t) => {
   const root = await target(t);
   await write(root, "package.json", JSON.stringify({ scripts: { test: "exit 99", lint: "exit 99" } }));
@@ -311,7 +369,7 @@ test("Claude instructions are standalone and preserve independent edits on reins
   assert.doesNotMatch(guidance, /AGENTS\.md|CLAUDE\.md/);
   const customized = guidance + "\nClaude-specific rule.\n";
   await write(root, "CLAUDE.md", customized);
-  await init(root, [], capture({ ask: async () => assert.fail("Repeated setup") }).io);
+  await init(root, ["--yes"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
   assert.equal(await read(root, "CLAUDE.md"), customized);
   assert.equal(await read(root, "AGENTS.md"), guidance);
   assert.equal(await doctor(root), 0);
@@ -321,7 +379,7 @@ test("adding Claude reuses existing project guidance without importing it", asyn
   const root = await target(t);
   await init(root);
   await write(root, "AGENTS.md", "# Custom rules\nRun make verify.\n");
-  await init(root, ["--agent", "claude"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
+  await init(root, ["--agent", "claude", "--yes"], capture({ ask: async () => assert.fail("Repeated setup") }).io);
   assert.equal(await read(root, "CLAUDE.md"), "# Custom rules\nRun make verify.\n");
 });
 

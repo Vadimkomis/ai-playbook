@@ -1,9 +1,9 @@
 class AiPlaybook < Formula
   desc "Set up portable project instructions for coding agents"
   homepage "https://github.com/Vadimkomis/ai-playbook"
-  url "https://github.com/Vadimkomis/ai-playbook/archive/4dcc356527041786505afd265a122ea295dd497d.tar.gz"
-  version "1.3.0-preview.1"
-  sha256 "6d38ca165f651dbd0b815aeefbbbcf1e94a4bb0a4dac98862100af2def0e7308"
+  url "https://github.com/Vadimkomis/ai-playbook/archive/7d9c433ee845971244660f45b60251a2becbaab1.tar.gz"
+  version "1.3.1"
+  sha256 "c2597d8af0246a9c5c0211a5e0f37e104fdcefe6a3b33527b92229b8363a9042"
   license "MIT"
 
   depends_on "node"
@@ -22,6 +22,7 @@ class AiPlaybook < Formula
     system bin/"ai-playbook", "--target", project, "--yes"
     expected = %w[.ai-playbook-manifest.json AGENTS.md ARCHITECTURE.md memory.md]
     assert_equal expected, project.children.map { |file| file.basename.to_s }.sort
+    assert_equal version.to_s, JSON.parse((project/".ai-playbook-manifest.json").read).fetch("version")
     assert_match "TODO", shell_output("#{bin}/ai-playbook doctor --target '#{project}'", 1)
 
     # Completed, customized docs must survive reinstalling with every optional asset.
