@@ -20,15 +20,17 @@ The formula pins a source revision and its SHA-256. Keep its version aligned wit
    unfinished setup, preservation and both optional native layouts.
    Homebrew may upgrade installed dependencies; use a disposable runner when
    testing a fresh dependency installation.
-   CI selects Homebrew for formula, workflow, verification-script and related
-   test changes; **Run workflow** requests it manually. See [CI evidence](verification.md#ci-evidence).
-   It runs `node scripts/verify-homebrew.js` with a fresh download cache and
+   See [CI evidence](verification.md#ci-evidence) for job selection and manual runs.
+   The job verifies the formula's pinned source archive, not unpinned CLI changes
+   in the branch. It runs `node scripts/verify-homebrew.js` with a fresh download cache and
    metadata updates enabled. An explicit `brew update` must succeed before install:
    Homebrew can otherwise continue installing after an auto-update failure.
    Each phase has a ten-minute deadline; failure stops
    subsequent phases without an outer retry. Logs are retained as an artifact,
    including on failure. This does not guarantee dependencies are absent from
    the runner or exercise the public tap; verify both separately when releasing.
+   Controlled processes in `tests/homebrew-install.test.js` verify failure
+   handling and timeout cleanup, not Homebrew networking or public-tap availability.
 3. Obtain independent review, commit and push the source change, then copy the
    formula unchanged into `Vadimkomis/homebrew-tap/Formula/ai-playbook.rb`.
    Commit and push the tap; verify both copies match.

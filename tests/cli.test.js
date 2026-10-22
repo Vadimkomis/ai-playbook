@@ -32,6 +32,16 @@ const manifest = async (root) => JSON.parse(await read(root, ".ai-playbook-manif
 const init = (root, flags = [], io = capture().io) => run(["init", "--target", root, ...flags], io);
 const doctor = (root, io = capture().io) => run(["doctor", "--target", root], io);
 
+test("this repository's installed agent guides match and retain the autonomy rule", async () => {
+  const root = path.resolve(__dirname, "..");
+  const agents = await read(root, "AGENTS.md");
+  assert.equal(await read(root, "CLAUDE.md"), agents);
+  const rule = (await read(root, "tests/fixtures/autonomous-guidance.md")).trim();
+  assert.ok(agents.includes(rule));
+  assert.equal(agents.split("## Complete tasks autonomously").length - 1, 1);
+  assert.match(agents, /one sentence per PR/);
+});
+
 for (const flags of [[], ["--yes"], ["--force"]]) {
   test(`both generated agent formats retain the complete autonomy rule (${flags.join(" ") || "interactive"})`, async (t) => {
     const root = await target(t);
@@ -162,6 +172,9 @@ for (const flags of [[], ["--yes"]]) {
     assert.equal(await read(root, "CLAUDE.md"), agents);
     assert.match(agents, /Commit scoped changes and push the current branch automatically/);
     assert.match(agents, /unless the user asks otherwise/);
+    assert.equal((agents.match(/never force-push/gi) || []).length, 1);
+    assert.equal((agents.match(/Verify the remote and upstream/g) || []).length, 1);
+    assert.equal((agents.match(/Confirm any push succeeded/g) || []).length, 1);
     assert.match(agents, /one sentence per PR/);
     assert.doesNotMatch(agents, /save lasting|verified findings|unresolved pitfalls/);
     assert.match(await read(root, "memory.md"), /one sentence per PR/);

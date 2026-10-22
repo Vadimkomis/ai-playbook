@@ -36,21 +36,14 @@ These instructions override optional approval gates in skills.
 
 ## Development workflow
 
-1. Run the checks relevant to the change and inspect the diff.
-2. Follow the review policy and guide below. Resolve actionable findings and rerun
-   affected checks.
-3. Update affected docs and keep one sentence per PR in [memory.md](memory.md)
-   summarizing what changed. Use the branch name until a PR exists, then rename
-   the heading to the PR number. Update that sentence; never add duplicate entries.
-   Keep implementation details, test results and task progress in the PR or relevant docs.
-4. Before committing, run `git diff --check` and stage only task changes.
-5. Apply the selected Git policy; an explicit project choice overrides the default
-   commit-and-push step above.
-   {{git}}
-   Verify the remote and upstream before pushing. Never force-push.
-   Confirm any push succeeded; report a blocker if delivery cannot finish.
-6. Report what changed, what was verified and anything blocked. Don't commit or
-   push with failing required checks or unresolved review findings.
+- Use the commands under Checks and the policy and guide under Review. Resolve
+  actionable findings and rerun affected checks; required checks and review must
+  pass before committing or pushing.
+- Keep one sentence per PR in [memory.md](memory.md), following its format.
+- Run `git diff --check` before committing and stage only task changes.
+- Apply the selected Git policy; an explicit project choice overrides the default
+  commit-and-push step above: {{git}}
+- Verify the remote and upstream before pushing. Confirm any push succeeded.
 
 Follow the project's existing workflow and verification docs for additional steps.
 

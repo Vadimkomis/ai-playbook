@@ -33,15 +33,11 @@ These instructions override optional approval gates in skills.
 - Run applicable checks from [verification](docs/development/verification.md).
 - Follow the [PR review guide](docs/development/review.md). Get independent review
   for substantial or risky changes; resolve findings and rerun affected checks.
-- Update affected docs and keep one sentence per PR in [memory.md](memory.md)
-  summarizing what changed. Use the branch name until a PR exists, then rename
-  the heading. Update the same sentence; keep implementation details, test
-  results and task progress in the PR description or relevant docs.
-- Inspect the diff, run `git diff --check`, and stage only task-scoped changes.
-- After checks and required review pass, commit and push the current branch unless
-  asked otherwise. Verify the remote and upstream; never force-push. Confirm the push succeeded.
-- Report checks actually run, blockers and commit/push status. Distinguish local
-  tests, CI results and actual agent discovery.
+  Required checks and review must pass before committing or pushing.
+- Keep one sentence per PR in [memory.md](memory.md), following its format.
+- Run `git diff --check` before committing and stage only task-scoped changes.
+- Verify the remote and upstream before pushing. Confirm the push succeeded.
+- Distinguish local tests, CI results and actual agent discovery in the final report.
 
 ## Working agreements
 

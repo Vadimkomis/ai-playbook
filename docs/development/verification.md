@@ -52,10 +52,5 @@ absent or zero baselines also select every check. An unavailable base commit
 fails the routing job instead of skipping checks. The selector and real-Git regression
 fixtures live in `scripts/ci-changes.js` and `tests/ci-changes.test.js`.
 
-The Homebrew job installs and tests the formula. It verifies the
-formula's pinned source archive, not unpinned CLI changes in the current branch.
-It uses a fresh download cache, enables metadata updates, limits each phase to
-ten minutes and uploads the installation log even after failure. Controlled
-process tests in `tests/homebrew-install.test.js` verify failure handling and
-timeout cleanup locally; they do not replace the real Homebrew job or the
-public-tap release check in [Homebrew delivery](homebrew.md).
+See [Homebrew delivery](homebrew.md) for the job's installation procedure,
+timeouts, retained logs and public-tap release checks.

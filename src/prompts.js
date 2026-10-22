@@ -8,7 +8,7 @@ const REVIEWS = {
 const GIT = {
   "1": "Leave changes uncommitted for review unless the user requests a commit or push.",
   "2": "Commit scoped changes automatically after checks and required review pass. Push only when requested.",
-  "3": "Commit scoped changes and push the current branch automatically after checks and required review pass, unless the user asks otherwise. Verify the remote and upstream, never force-push, and confirm the push succeeded."
+  "3": "Commit scoped changes and push the current branch automatically after checks and required review pass, unless the user asks otherwise."
 };
 
 function terminalPrompt(io) {
