@@ -1,6 +1,11 @@
 # Project memory
 
-Keep one sentence per PR summarizing what changed, identified by its number or
-link. Use the branch name until a PR exists, then rename the heading. Update the
-same entry throughout the work; keep implementation details and test results in
-the PR description and relevant documentation.
+Keep exactly one sentence per PR summarizing the final change.
+Identify it by PR number or link and update it in place.
+Before a PR exists, use the branch name; rename that entry later.
+
+Do not include test results or counts, lint warnings, CI status,
+commit/push status, task progress, or routine verification details.
+Put those in the PR description or final response.
+
+Do not repeat information already documented elsewhere.
