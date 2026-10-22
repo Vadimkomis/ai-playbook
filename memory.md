@@ -35,26 +35,9 @@ Verify npm latest, checksum and a registry install outside this repository:
 can precede availability while scanning completes. Local Homebrew also had an
 unrelated stale notifyme tap; do not confuse host state with clean-runner evidence.
 
-Strength AI Backend upgrade preserved 83 files; doctor and repeat installation
-passed. Its manifest-only commit `c10fd70` remains local. Preserve existing project
-content, but offer interactive users a keep-or-review choice rather than silently
-skipping policy questions. Blank review answers retain policies; preview and
-confirmation precede writes. Confirmed Markdown sections supersede earlier policy
-choices while unrelated text remains. Repeat reviews update those sections;
-concurrent edits and malformed markers abort. Standalone Claude guidance receives
-the same confirmed choices while preserving its independent text. `--yes` keeps
-existing guidance; headless review requires a terminal or explicit `--yes`.
+Existing projects should offer a keep-or-review choice for their policies.
+Preserve unrelated content and require preview and confirmation before saving.
+Verified locally; actual agent compliance remains unverified.
 
-Guided review is implemented but not yet published. Verification: 84 local tests,
-including 15 review cases, independent review, and real-terminal preview/save on
-a temporary copy of the backend guidance. The actual backend was not rewritten.
-Use plain wording for setup safeguards and memory headings.
-
-CI runs on PR updates and `main` pushes without duplicate feature-branch push
-runs, and cancels superseded runs. A whitespace/routing job selects from the
-whole change range: human docs/images use one job; code, executable guidance and
-unknown paths retain six platform jobs. Formula, workflow, verification scripts
-and related tests also select Homebrew. Manual runs or absent or zero baselines run all
-checks. Real-Git fixtures cover mixed PRs, renames and whitespace failures.
-Local verification: 107 tests passed, actionlint passed and independent review
-found no remaining issues; remote execution remains to be checked.
+Select CI checks from the whole PR diff so a documentation-only follow-up cannot
+skip testing earlier code changes.
