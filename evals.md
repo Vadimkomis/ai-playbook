@@ -5,6 +5,11 @@ Test runners and CI are the authoritative source for pass/fail results.
 
 ## Capability distribution
 
+- Name: Autonomous task guidance
+- Description: Both generated agent formats include the complete autonomy rule in interactive, starter and replacement installations.
+- Test mapping: `tests/cli.test.js`; `tests/fixtures/autonomous-guidance.md`
+- Notes: Generation checks verify distributed instructions, not actual agent compliance; existing custom guidance is preserved on ordinary reinstall.
+
 - Name: CI check selection
 - Description: Human documentation avoids the platform matrix; executable guidance and unknown paths retain it. Selection checks the complete change range, treats renames as deletion plus addition, fails whitespace errors and runs all checks for manual requests or absent or zero baselines.
 - Test mapping: `tests/ci-changes.test.js`; `.github/workflows/test.yml`

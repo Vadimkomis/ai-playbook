@@ -2,6 +2,12 @@
 
 ## Setup
 
+- Generated `AGENTS.md` and standalone `CLAUDE.md` direct agents to complete
+  authorized tasks through implementation, verification, scoped commit and push,
+  then report the result. Optional skill approval gates do not require extra
+  confirmation; blocking ambiguity, permissions and explicit project Git choices
+  still apply. Existing installed instructions must be updated separately.
+
 - Running `ai-playbook` or `ai-playbook init` starts the same setup conversation.
 - A new project receives `AGENTS.md`, `ARCHITECTURE.md`, `memory.md` and installation metadata.
 - Questions capture purpose, code boundaries, commands, safeguards, review and Git policy.

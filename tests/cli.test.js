@@ -32,6 +32,24 @@ const manifest = async (root) => JSON.parse(await read(root, ".ai-playbook-manif
 const init = (root, flags = [], io = capture().io) => run(["init", "--target", root, ...flags], io);
 const doctor = (root, io = capture().io) => run(["doctor", "--target", root], io);
 
+for (const flags of [[], ["--yes"], ["--force"]]) {
+  test(`both generated agent formats retain the complete autonomy rule (${flags.join(" ") || "interactive"})`, async (t) => {
+    const root = await target(t);
+    if (flags.includes("--force")) {
+      await write(root, "AGENTS.md", "# Old guidance\n");
+      await write(root, "CLAUDE.md", "# Old Claude guidance\n");
+    }
+    const { io } = capture({ ask: async (key) => key === "git" ? "3" : answers[key] });
+    assert.equal(await init(root, [...flags, "--agent", "claude"], io), 0);
+    const rule = (await fs.readFile(path.join(__dirname, "fixtures/autonomous-guidance.md"), "utf8")).trim();
+    for (const name of ["AGENTS.md", "CLAUDE.md"]) {
+      const guidance = await read(root, name);
+      assert.ok(guidance.includes(rule), `${name} must include the complete requested rule`);
+      assert.equal(guidance.split("## Complete tasks autonomously").length - 1, 1);
+    }
+  });
+}
+
 test("no arguments start setup without selecting an agent or a stack", () => {
   const parsed = parseArgs([]);
   assert.equal(parsed.command, "init");
