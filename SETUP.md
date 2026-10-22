@@ -13,8 +13,10 @@ Use this guide with any coding agent that can read and edit your project.
    and link existing workflow and verification docs. Keep the template's completion
    sequence when creating new guidance. Preview proposed updates to existing
    instructions and obtain confirmation before saving; preserve unrelated content.
-4. Keep unresolved facts visibly open. Until the user chooses otherwise, leave
-   verified changes for review; automatic commit or push requires an explicit choice.
+4. Keep unresolved facts visibly open. For new projects, default to committing and
+   pushing scoped changes after checks and required review pass, unless the user
+   asks otherwise. Offer commit-only and leave-uncommitted choices; preserve
+   existing Git policies. Keep memory to one sentence per PR summarizing the changes.
 5. Summarize the agreed rules and any open questions, then start the user's task.
 
 Keep the documents short and editable. Put project-specific safeguards and

@@ -7,7 +7,9 @@
 - Questions capture purpose, code boundaries, commands, safeguards, review and Git policy.
 - New `AGENTS.md` guidance includes a completion sequence: checks, review and rechecks,
   documentation maintenance, scoped Git delivery and evidence reporting. It uses the
-  selected review and Git policies.
+  selected review and Git policies. New projects default to committing and pushing
+  scoped changes after checks and required review pass, unless the user asks
+  otherwise; setup still offers leave-uncommitted and commit-only choices.
 - When instructions already exist, interactive setup offers to keep or review them.
   Review asks about checks, safeguards, review, Git policy and additional rules.
   Blank answers keep existing policies. Proposed changes to `AGENTS.md` and any
@@ -34,9 +36,9 @@
   instructions as `AGENTS.md`. Existing files retain their independent edits.
 - Specs, native agents and independent-validation contracts are optional.
 - Existing integrations, extras and legacy files survive reinstallation and layout migration.
-- New memory guidance saves lasting findings before a task ends, including blocked
-  work. Save notes under the branch name until a PR exists. Then change the heading
-  to the PR number.
+- Memory guidance requires one sentence per PR summarizing what changed. Use the
+  branch name until a PR exists, then rename the heading and update the same
+  sentence. Implementation details and test results belong in the PR or relevant docs.
 
 ## Verification
 

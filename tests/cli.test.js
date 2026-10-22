@@ -132,8 +132,33 @@ test("blank required answers are unfinished rather than fabricated", async (t) =
   await init(root, [], io);
   assert.match(output.stdout, /unfinished|complete setup/i);
   assert.equal(await doctor(root), 1);
-  assert.match(await read(root, "AGENTS.md"), /Leave changes uncommitted/);
+  assert.match(await read(root, "AGENTS.md"), /Commit scoped changes and push the current branch automatically/);
 });
+
+for (const flags of [[], ["--yes"]]) {
+  test(`new project defaults to commit and push with concise standalone guidance (${flags.join(" ") || "interactive"})`, async (t) => {
+    const root = await target(t);
+    const { io } = capture({ ask: async (key) => key === "git" ? "" : answers[key] });
+    assert.equal(await init(root, [...flags, "--agent", "claude"], io), 0);
+    const agents = await read(root, "AGENTS.md");
+    assert.equal(await read(root, "CLAUDE.md"), agents);
+    assert.match(agents, /Commit scoped changes and push the current branch automatically/);
+    assert.match(agents, /unless the user asks otherwise/);
+    assert.match(agents, /one sentence per PR/);
+    assert.doesNotMatch(agents, /save lasting|verified findings|unresolved pitfalls/);
+    assert.match(await read(root, "memory.md"), /one sentence per PR/);
+  });
+}
+
+for (const [choice, policy] of [["1", /Leave changes uncommitted/], ["2", /Push only when requested/],
+  ["3", /push the current branch automatically/]]) {
+  test(`explicit Git policy ${choice} appears in both instruction files`, async (t) => {
+    const root = await target(t);
+    const { io } = capture({ ask: async (key) => key === "git" ? choice : answers[key] });
+    assert.equal(await init(root, ["--agent", "claude"], io), 0);
+    for (const name of ["AGENTS.md", "CLAUDE.md"]) assert.match(await read(root, name), policy);
+  });
+}
 test("command suggestions use existing scripts without executing them", async (t) => {
   const root = await target(t);
   await write(root, "package.json", JSON.stringify({ scripts: { test: "exit 99", lint: "exit 99" } }));

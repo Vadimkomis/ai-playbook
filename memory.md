@@ -19,4 +19,4 @@ Keep memory to one entry per PR.
 
 ## [PR #14](https://github.com/Vadimkomis/ai-playbook/pull/14) — Installation verification and guided policy review
 
-Improved Homebrew installation checks, added guided review of existing project policies, and reduced unnecessary CI runs.
+Improved Homebrew checks, added guided policy review, reduced unnecessary CI runs, and made concise PR memory and automatic commit-and-push the defaults for new projects.

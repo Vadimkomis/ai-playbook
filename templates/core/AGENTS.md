@@ -15,14 +15,14 @@ Reuse recorded decisions and follow links to detailed docs when relevant.
 1. Run the checks relevant to the change and inspect the diff.
 2. Follow the review policy and guide below. Resolve actionable findings and rerun
    affected checks.
-3. Update affected docs. Before ending a task, including blocked work, save lasting
-   decisions, verified findings and unresolved pitfalls in [memory.md](memory.md).
-   Keep one entry per PR. Save notes under the branch name until a PR exists.
-   Then change the heading to the PR number. Separate confirmed facts from hypotheses.
-   Never create duplicate entries; keep temporary task progress elsewhere.
+3. Update affected docs and keep one sentence per PR in [memory.md](memory.md)
+   summarizing what changed. Use the branch name until a PR exists, then rename
+   the heading to the PR number. Update that sentence; never add duplicate entries.
+   Keep implementation details, test results and task progress in the PR or relevant docs.
 4. Before committing, run `git diff --check` and stage only task changes.
 5. {{git}}
-   Never force-push. Confirm any push succeeded.
+   Verify the remote and upstream before pushing. Never force-push.
+   Confirm any push succeeded; report a blocker if delivery cannot finish.
 6. Report what changed, what was verified and anything blocked. Don't commit or
    push with failing required checks or unresolved review findings.
 

@@ -50,7 +50,7 @@ async function renderDocuments(answers) {
     structure: answers.structure || "Not yet specified. Inspect the repository and confirm important boundaries before changing them.",
     commands: answers.commands ? commandBlock(answers.commands) : "Not yet specified. Agree on the relevant checks before changing code.",
     safeguards: answers.safeguards || "Existing behavior, stored data and public interfaces.",
-    review: answers.review || REVIEWS["2"], git: answers.git || GIT["1"],
+    review: answers.review || REVIEWS["2"], git: answers.git || GIT["3"],
     rules: answers.rules ? `\n## Additional project rules\n\n${answers.rules}\n` : "",
     pendingArchitecture: pendingArchitecture ? `${PENDING}\n` : "",
     pendingRules: pendingRules ? `${PENDING}\n` : ""

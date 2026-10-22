@@ -8,7 +8,7 @@ const REVIEWS = {
 const GIT = {
   "1": "Leave changes uncommitted for review unless the user requests a commit or push.",
   "2": "Commit scoped changes automatically after checks and required review pass. Push only when requested.",
-  "3": "Commit scoped changes and push the current branch automatically after checks and required review pass. Never force-push."
+  "3": "Commit scoped changes and push the current branch automatically after checks and required review pass, unless the user asks otherwise. Verify the remote and upstream, never force-push, and confirm the push succeeded."
 };
 
 function terminalPrompt(io) {
@@ -49,7 +49,7 @@ function policyQuestions(proposed = {}, keep = false) {
     ["review", `Review: ${keep ? "0) keep existing  " : ""}1) self-review  2) independent for substantial changes  3) independent for every change`,
       keep ? "0" : "2", keep ? { "0": "", ...REVIEWS } : REVIEWS],
     ["git", `After checks and review: ${keep ? "0) keep existing  " : ""}1) leave changes for review  2) commit  3) commit and push`,
-      keep ? "0" : "1", keep ? { "0": "", ...GIT } : GIT],
+      keep ? "0" : "3", keep ? { "0": "", ...GIT } : GIT],
     ["rules", `Any other rules? (screenshots, evaluation criteria, dependencies; Enter to ${keep ? "keep existing" : "skip"})`, ""],
   ];
 }

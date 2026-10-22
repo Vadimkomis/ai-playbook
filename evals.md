@@ -23,7 +23,7 @@ Test runners and CI are the authoritative source for pass/fail results.
 - Name: Portable guided setup
 - Description: The default installation asks for missing project information and writes three editable Markdown docs without selecting an agent or stack. Cancellation, dry runs and incomplete answers are reported honestly.
 - Test mapping: `tests/cli.test.js`
-- Notes: Reinstallation preserves existing docs and policies. Unknown noninteractive answers remain unfinished.
+- Notes: Generated instructions require one sentence per PR in memory and default to commit-and-push after checks and review; explicit Git choices and existing docs remain authoritative. Unknown noninteractive answers remain unfinished.
   Review generated workflow guidance separately; installer tests do not prove agent compliance.
 
 - Name: Review existing project policies
