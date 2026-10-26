@@ -1,6 +1,6 @@
 {
   "name": "@vadimkom/ai-playbook",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "CLI to install ai-playbook into any repository",
   "license": "MIT",
   "type": "commonjs",
