@@ -37,8 +37,7 @@ brew install vadimkomis/tap/ai-playbook
 ai-playbook --target "/path/to/your-project"
 ```
 
-Homebrew manages Node.js for you. The first Homebrew package is a preview of the
-guided setup shown here. Answer the questions, then check your installation:
+Homebrew manages Node.js for you. Answer the questions, then check your installation:
 
 ```sh
 ai-playbook doctor --target "/path/to/your-project"
@@ -91,8 +90,11 @@ with spoken narration and on-screen commands.
 
 ## Make it yours
 
-Edit the three files as your project evolves. Setup keeps existing guidance when
-run again; update established rules in the files themselves.
+Edit the three files as your project evolves, or run `ai-playbook` again to review
+your checks, safeguards, review and Git policy. Existing projects get a choice to
+keep current rules or review them. Changes are previewed and saved only after
+confirmation; unrelated instructions stay intact. Use `--yes` to keep existing
+guidance without questions.
 
 Add specialist workflows, feature/evaluation templates, or Codex and Claude
 integrations when you need them.

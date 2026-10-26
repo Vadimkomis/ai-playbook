@@ -60,7 +60,8 @@ async function writePlan(root, entries, force, io) {
   for (const entry of entries) {
     const file = await safeDestination(root, entry.to);
     const before = await readOptional(file);
-    planned.push({ ...entry, file, before, write: before === null || force || entry.to === MANIFEST });
+    if (entry.replace && before !== entry.expected) throw new Error(`File changed during setup: ${entry.to}`);
+    planned.push({ ...entry, file, before, write: before === null || force || entry.replace || entry.to === MANIFEST });
   }
   const changed = [];
   try {

@@ -2,17 +2,32 @@
 
 ## Setup
 
+- Generated `AGENTS.md` and standalone `CLAUDE.md` direct agents to complete
+  authorized tasks through implementation, verification, scoped commit and push,
+  then report the result. Optional skill approval gates do not require extra
+  confirmation; blocking ambiguity, permissions and explicit project Git choices
+  still apply. Existing installed instructions must be updated separately.
+
 - Running `ai-playbook` or `ai-playbook init` starts the same setup conversation.
 - A new project receives `AGENTS.md`, `ARCHITECTURE.md`, `memory.md` and installation metadata.
 - Questions capture purpose, code boundaries, commands, safeguards, review and Git policy.
 - New `AGENTS.md` guidance includes a completion sequence: checks, review and rechecks,
   documentation maintenance, scoped Git delivery and evidence reporting. It uses the
-  selected review and Git policies.
-- Existing docs remain authoritative and unchanged. Setup asks for missing documents;
-  users edit established choices directly or explicitly replace files with `--force`.
+  selected review and Git policies. New projects default to committing and pushing
+  scoped changes after checks and required review pass, unless the user asks
+  otherwise; setup still offers leave-uncommitted and commit-only choices.
+- When instructions already exist, interactive setup offers to keep or review them.
+  Review asks about checks, safeguards, review, Git policy and additional rules.
+  Blank answers keep existing policies. Proposed changes to `AGENTS.md` and any
+  standalone `CLAUDE.md` are shown and require confirmation before writing.
+- Confirmed policies explicitly supersede earlier instructions for that choice;
+  other text stays unchanged. Repeat reviews update those policy sections.
+  `--yes` preserves existing guidance without reviewing; `--force` replaces files.
 - Setup makes evidence-based command suggestions without running project commands.
 - Unknown facts stay open. Noninteractive runs require `--yes` and mark unfinished docs.
 - Cancellation before writing and dry runs leave project files unchanged.
+- Declining a proposed review leaves all files and installation metadata unchanged.
+  If a file changes during setup, setup stops to avoid losing those changes.
 
 ## Portability and customization
 
@@ -27,6 +42,9 @@
   instructions as `AGENTS.md`. Existing files retain their independent edits.
 - Specs, native agents and independent-validation contracts are optional.
 - Existing integrations, extras and legacy files survive reinstallation and layout migration.
+- Memory guidance requires one sentence per PR summarizing what changed. Use the
+  branch name until a PR exists, then rename the heading and update the same
+  sentence. Implementation details and test results belong in the PR or relevant docs.
 
 ## Verification
 

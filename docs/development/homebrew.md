@@ -6,21 +6,31 @@ an identical copy so users can run `brew install vadimkomis/tap/ai-playbook`.
 Node is the CLI's existing runtime dependency; installation runs no npm scripts
 and needs no npm development dependencies.
 
-The initial `1.3.0-preview.1` formula packages guided setup from revision
-`4dcc356527041786505afd265a122ea295dd497d`. That preview still contains package version `1.2.0`;
-new source releases do not update the tap automatically.
+The formula pins a source revision and its SHA-256. Keep its version aligned with
+`package.json`; new source releases do not update the tap automatically.
 
 ## Updating the package
 
 1. Select a reviewed, tested and pushed source revision. Update the formula URL,
    version and SHA-256 of its downloaded archive. Never point at a moving branch.
-   Use a newer preview version until guided setup has a stable release.
+   Bump `package.json` before pinning the source so the installed version matches.
 2. Install from a temporary local tap containing the candidate formula. Run
    `brew test <test-tap>/ai-playbook` and `brew style <test-tap>/ai-playbook`,
    plus `npm test` in this repository. The formula test covers paths with spaces,
    unfinished setup, preservation and both optional native layouts.
    Homebrew may upgrade installed dependencies; use a disposable runner when
    testing a fresh dependency installation.
+   See [CI evidence](verification.md#ci-evidence) for job selection and manual runs.
+   The job verifies the formula's pinned source archive, not unpinned CLI changes
+   in the branch. It runs `node scripts/verify-homebrew.js` with a fresh download cache and
+   metadata updates enabled. An explicit `brew update` must succeed before install:
+   Homebrew can otherwise continue installing after an auto-update failure.
+   Each phase has a ten-minute deadline; failure stops
+   subsequent phases without an outer retry. Logs are retained as an artifact,
+   including on failure. This does not guarantee dependencies are absent from
+   the runner or exercise the public tap; verify both separately when releasing.
+   Controlled processes in `tests/homebrew-install.test.js` verify failure
+   handling and timeout cleanup, not Homebrew networking or public-tap availability.
 3. Obtain independent review, commit and push the source change, then copy the
    formula unchanged into `Vadimkomis/homebrew-tap/Formula/ai-playbook.rb`.
    Commit and push the tap; verify both copies match.
@@ -30,3 +40,16 @@ new source releases do not update the tap automatically.
 For a broken update, publish the previous known-good URL and checksum with a
 newer formula version/revision so existing users can upgrade to the correction.
 Tool upgrades do not rewrite project guidance; users rerun setup explicitly.
+
+## Download failures
+
+A failure downloading `formulae.brew.sh` metadata occurs in Homebrew before
+ai-playbook setup. Capture the command, Homebrew version, final error and exit
+status. Repeated progress output alone does not establish an infinite loop.
+Do not treat disabling auto-update or sudo as a download fix. Investigate the
+failed endpoint and reproduce the public installation before claiming resolution.
+
+`tests/homebrew-install.test.js` runs the verification script against controlled
+processes to check successful sequencing, inherited update overrides, failed
+downloads, missing executables and termination of stalled process groups.
+These tests validate our supervisor, not Homebrew's internal retry behavior.

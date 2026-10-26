@@ -36,10 +36,21 @@ Automated, simulator and physical-device evidence are distinct.
 
 ## CI evidence
 
-[CI](../../.github/workflows/test.yml) runs `npm test` on macOS, Linux and Windows
-with Node.js 22 and 24. A local pass does not prove those jobs passed. Report a
+[CI](../../.github/workflows/test.yml) runs once per PR update and on pushes to
+`main`, cancelling superseded runs for the same PR or branch. Its first job checks
+whitespace and selects checks from the whole PR diff (or the whole push).
+Human documentation and image changes use only that job. Code, templates, skills,
+contracts, dependencies and unknown paths run `npm test` on macOS, Linux and
+Windows with Node.js 22 and 24. A docs-only follow-up commit still runs those tests
+when the PR contains code changes. A local pass does not prove those jobs passed. Report a
 remote result only after inspecting the run for the relevant commit; identify
 pending, skipped or infrastructure-blocked checks separately.
 
-A separate macOS job installs and tests the Homebrew formula. It verifies the
-formula's pinned source archive, not unpinned CLI changes in the current branch.
+A separate macOS job runs for formula, workflow, verification-script and Homebrew
+or CI-routing test changes. Use **Run workflow** to run every check manually;
+absent or zero baselines also select every check. An unavailable base commit
+fails the routing job instead of skipping checks. The selector and real-Git regression
+fixtures live in `scripts/ci-changes.js` and `tests/ci-changes.test.js`.
+
+See [Homebrew delivery](homebrew.md) for the job's installation procedure,
+timeouts, retained logs and public-tap release checks.
