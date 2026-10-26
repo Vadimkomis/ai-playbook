@@ -1,9 +1,9 @@
 class AiPlaybook < Formula
   desc "Set up portable project instructions for coding agents"
   homepage "https://github.com/Vadimkomis/ai-playbook"
-  url "https://github.com/Vadimkomis/ai-playbook/archive/7d9c433ee845971244660f45b60251a2becbaab1.tar.gz"
-  version "1.3.1"
-  sha256 "c2597d8af0246a9c5c0211a5e0f37e104fdcefe6a3b33527b92229b8363a9042"
+  url "https://github.com/Vadimkomis/ai-playbook/archive/052192cbcd87c272c6fd6fa0c26f34cfc7106916.tar.gz"
+  version "1.4.0"
+  sha256 "22c49d532db4cad2c050989e949e4321afe496587dcf757b4424fe146c980434"
   license "MIT"
 
   depends_on "node"
